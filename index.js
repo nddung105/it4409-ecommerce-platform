@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const {PORT} = require("./src/constants/constants")
+const route = require('./src/routes')
 
 
 const app = express();
@@ -13,9 +14,12 @@ app.use(express.json());
 app.use(cors());
 
 // route middleware
-app.use("/",function (req, res) {
-    res.send('Page');
-});
+// app.use("/",function (req, res) {
+//     res.send('Page');
+// });
+
+//route init
+route(app)
 
 app.listen(PORT, () => {
     console.log("server start - " + PORT);
