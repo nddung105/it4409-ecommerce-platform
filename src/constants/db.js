@@ -1,10 +1,14 @@
-const Pool = require('pg').Pool
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'postgres',
-  password:'postgres',
-  port: 5432,
-})
+const { Pool } = require('pg');
+const DATABASE_URL = require('./constants')
 
-module.exports = pool
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL
+});
+
+pool.on('connect', () => {
+  console.log('Base de Dados conectado com sucesso!');
+});
+
+module.exports = {
+  query: (text, params) => pool.query(text, params),
+};

@@ -1,7 +1,11 @@
-const productRouter = require('./products')
+const express = require("express");
+const mainRoute = require("./mainRoute")
 
-function route(app) {
-    app.use('/api/products',productRouter)
-}
-  
-module.exports = route
+const path = require("path");
+
+const apiRouter = express.Router();
+
+apiRouter.use("/api/v1", mainRoute);
+apiRouter.use("/files/", express.static(path.join(__dirname, "../files")));
+
+module.exports = apiRouter;
