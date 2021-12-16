@@ -4,7 +4,7 @@ const router = express.Router();
 const {product:productController} = require('../controllers')
 
 router.post('/',productController.addProduct);
-router.delete('/',productController.deleteProduct)
+router.delete('/:id',productController.deleteProduct)
 router.get('/:id',productController.findProductById)
 router.put('/:id',productController.modifyProduct)
 router.get('',productController.filterByProperties)
