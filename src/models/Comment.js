@@ -1,37 +1,25 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 const sequelize = require("../constants/database");
 
-class Product extends Model {}
+class Comment extends Model {}
 
-Product.init(
+Comment.init(
   {
     // Model attributes are defined here
-    name: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    price: {
-      type: DataTypes.DOUBLE,
-      // allowNull defaults to true
-    },
-    category: {
-        type: DataTypes.STRING,
-        // allowNull defaults to true
-      },
-    brand: {
+    product_id:{
       type: DataTypes.STRING,
-      // allowNull defaults to true
-    },
-    description: {
-        type: DataTypes.STRING,
-        // allowNull defaults to true
-      },
+      allowNull: false
+    }
 
   },
   {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: "product", // We need to choose the model name
+    modelName: "comment", // We need to choose the model name
     // don't forget to enable timestamps!
     timestamps: false,
 
@@ -43,4 +31,4 @@ Product.init(
   }
 );
 
-module.exports = Product
+module.exports = Comment

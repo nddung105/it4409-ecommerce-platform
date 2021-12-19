@@ -1,0 +1,14 @@
+Host
+ec2-3-95-130-249.compute-1.amazonaws.com
+Database
+d247bq4422i31t
+User
+qoqbafmdvixtkt
+Port
+5432
+Password
+5d7104e613200faddd66886ce6a6dc3194b23973d5229854601ac007553924a6
+URI
+postgres://qoqbafmdvixtkt:5d7104e613200faddd66886ce6a6dc3194b23973d5229854601ac007553924a6@ec2-3-95-130-249.compute-1.amazonaws.com:5432/d247bq4422i31t
+Heroku CLI
+heroku pg:psql postgresql-rectangular-14395 --app it4409-ecommerce-platform
