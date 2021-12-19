@@ -16,17 +16,17 @@
   
 const User = require('../models/Users')
 // User.sync({ force: true }).then(
-//     (res) => {console.log(res)}
+//     (res) => {console.log('----')}
 // )
 func =  async () => {
-    // const user = await User.create({ firstName: 'Jane', lastName: 'Doe' });
-    const users = await User.findAll();
+    // const user = await User.create({ username: 'Jane', name: 'Doe' , hashed_password:"sdfsfa"});
     // await user.save()
+    const users = await User.findAll();
     return users
 }
 
-// func().then(
-//  (res) => console.log(JSON.stringify(res, null, 2))
-// )
+func().then(
+ (res) => console.log(res)
+)
 
-User.drop()
+// User.drop()
