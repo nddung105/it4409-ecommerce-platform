@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
+const constant = require("../constants/constants");
 const sequelize = require("../constants/database");
 
 class User extends Model {}
@@ -6,11 +7,37 @@ class User extends Model {}
 User.init(
   {
     // Model attributes are defined here
-    firstName: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
-    lastName: {
+    hashed_password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      // allowNull defaults to true
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      // allowNull defaults to true
+    },
+    role: {
+      type: DataTypes.STRING,
+      // allowNull: false,
+      defaultValue: constant.ROLE_CUSTOMER,
+      validate: {
+        isIn: [
+          [constant.ROLE_ADMIN, constant.ROLE_CUSTOMER, constant.ROLE_SALE],
+        ],
+      },
+      // allowNull defaults to true
+    },
+    phonenumber: {
+      type: DataTypes.STRING,
+      // allowNull defaults to true
+    },
+    avatar: {
       type: DataTypes.STRING,
       // allowNull defaults to true
     },
@@ -18,7 +45,7 @@ User.init(
   {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: "User", // We need to choose the model name
+    modelName: "user", // We need to choose the model name
     // don't forget to enable timestamps!
     timestamps: true,
 
@@ -30,4 +57,4 @@ User.init(
   }
 );
 
-module.exports = User
+module.exports = User;
