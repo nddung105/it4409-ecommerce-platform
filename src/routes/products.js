@@ -1,9 +1,10 @@
 const express = require('express')
+const upload = require('../middlewares/upload')
 const router = express.Router();
 
 const {product:productController} = require('../controllers')
 
-router.post('/',productController.addProduct);
+router.post('/',upload.single('myfile'),productController.addProduct);
 router.delete('/:id',productController.deleteProduct)
 router.get('/:id',productController.findProductById)
 router.put('/:id',productController.modifyProduct)

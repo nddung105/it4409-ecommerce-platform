@@ -1,4 +1,5 @@
 const express = require('express')
+const validJWTNeeded = require('../middlewares/validate')
 const router = express.Router();
 
 const {comment:commentController} = require('../controllers')

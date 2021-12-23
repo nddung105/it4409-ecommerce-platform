@@ -12,13 +12,8 @@ async function filterByProperties(req,res){
       limit:limit,
       offset:offset
     })
-    if (data) {
-        res.send(data);
-      } else {
-        res.status(404).send({
-          message: `Cannot find Product with brand=${brand}.`
-        });
-    }
+
+    res.send(data)
 }
 
 module.exports = filterByProperties;
