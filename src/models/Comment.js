@@ -13,6 +13,12 @@ Comment.init(
     product_id:{
       type: DataTypes.STRING,
       allowNull: false
+    },
+    user_id:{
+      type:DataTypes.INTEGER
+    },
+    rate:{
+      type:DataTypes.INTEGER
     }
 
   },

@@ -17,6 +17,9 @@ Reply.init(
     comment_id:{
         type: DataTypes.BIGINT,
         allowNull: false
+    },
+    staff_id:{
+      type: DataTypes.INTEGER,
     }
 
   },
