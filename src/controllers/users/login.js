@@ -32,6 +32,11 @@ async function login(req, res, next) {
       },
       JWT_SECRET
     );
+
+    if (user.role == ""){
+        // send index.html for Role
+    }
+    
     return res.status(httpStatus.OK).json({
       id: user.id,
       username: username,

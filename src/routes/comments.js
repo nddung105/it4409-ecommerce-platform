@@ -1,9 +1,12 @@
 const express = require('express')
+const validJWTNeeded = require('../middlewares/validate')
 const router = express.Router();
+const auth = require("../middlewares/auth");
+const {asyncWrapper} = require("../utils/asyncWrapper")
 
-const {comment:commentController} = require('../controllers')
+const { comment: commentController } = require("../controllers");
 
-router.post('/',commentController.commentProduct)
-router.put('/',commentController.modifyComment)
-router.delete('/:id',commentController.deleteComment)
-module.exports = router
+router.post("/", commentController.commentProduct);
+router.put("/", commentController.modifyComment);
+router.delete("/:id", commentController.deleteComment);
+module.exports = router;

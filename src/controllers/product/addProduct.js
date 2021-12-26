@@ -20,12 +20,19 @@ async function validation(productInfo) {
   }
 
 async function addProduct(req, res) {
+
+  const file = req.file
+  if(!file) {
+    abort(400,"Please upload file")
+  }
+
   const productInfo = {
     name: req.body.name,
     price: req.body.price,
     category: req.body.category,
     brand: req.body.brand,
     description: req.body.description,
+    file:file
   };
 
   await validation(productInfo);
