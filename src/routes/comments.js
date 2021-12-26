@@ -1,4 +1,5 @@
-const express = require("express");
+const express = require('express')
+const validJWTNeeded = require('../middlewares/validate')
 const router = express.Router();
 const auth = require("../middlewares/auth");
 const {asyncWrapper} = require("../utils/asyncWrapper")
