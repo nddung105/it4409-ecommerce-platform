@@ -1,0 +1,149 @@
+body {
+  background-color: #ece9e9;
+}
+.main-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+/*
+.logo {
+  display: block;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  z-index: 1;
+}
+*/
+.login-form {
+  width: 40%;
+  min-height: 50vh;
+  padding: 4rem;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.2);
+}
+
+.login-form  * {
+  font-size: inherit
+}
+
+.label-item {
+  font-weight: bold;
+}
+
+.login-form  h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: capitalize;
+} 
+.label-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label-container span{
+  font-size: 1.5rem;
+}
+
+/* .label-container p {
+  margin: 0;
+  padding: 0;
+} */
+
+.label-container a {
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--success-color);
+}
+
+.show-hide-pwd {
+  display: inline-block;
+  vertical-align: bottom;
+  cursor: pointer;
+}
+.hide {
+  display: none;
+}
+
+input[type=text], input[type=password], input[type=submit] {
+  width: 100%;
+  display: inline-block;
+  padding: 1.2rem 2rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+}
+
+input[type=text], input[type=password] {
+  font-size: 1.5rem;
+  border: 1px solid var(--main-color);
+  margin-bottom: 2rem;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  border: 1px solid var(--primary-color);
+}
+
+input[type=submit] {
+  color: var(--second-color);
+  background-color: var(--primary-color);
+  transition: 0.3s ease-out;
+  margin: 3rem 0 0 0;
+  border-radius: 50px;
+}
+
+input[type=submit]:hover {
+  opacity: 0.8;
+}
+
+
+.img-side {
+  width: 30%;
+}
+
+
+@media (max-width: 800px) {
+  .img-side {
+    display: none;
+  }
+
+  .login-form {
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+.sign-up-notice {
+  font-size: 1.5rem;
+}
+
+.sign-up-notice > a {
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* .container {
+  padding: 16px;
+} */
+
+/* span.psw {
+  float: right;
+  padding-top: 16px;
+} */
+
+/* @media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+} */

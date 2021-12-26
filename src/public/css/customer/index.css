@@ -1,0 +1,116 @@
+/* 4 icon */
+.container1 {
+  --column: 4;
+  --spacing: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 800px) {
+  .container1 {
+    --column: 2;
+  }
+}
+
+.container1-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  padding: 2rem 0;
+  width: calc((100% / var(--column)) - var(--spacing));
+}
+
+.container1-item > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+  margin: 2rem 0;
+  border-radius: 50%;
+  background-color: #ddd;
+  font-size: 3rem;
+  color: var(--danger-color);
+}
+
+.container1-item > span {
+  font-weight: bold;
+}
+
+/* product container */
+
+.product-container {
+  margin-top: 2rem;
+  padding: 4rem;
+}
+
+.product-container-title {
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  text-decoration: none;
+  color: var(--main-color);
+
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+
+  margin-bottom: 3rem;
+
+  transition: color 0.3s ease-out;
+}
+
+.product-container-title::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleY(0);
+    height: 2px;
+    bottom: -0.5rem;
+    left: 0;
+    background-color: var(--danger-color);
+    transform-origin: top;
+    transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.product-container-title:hover {
+  color: var(--danger-color);
+}
+
+.product-container-title:hover::after {
+  transform-origin: bottom;
+  transform: scaleY(1);
+}
+
+.more-product-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--main-color);
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  transition: 0.3s linear;
+}
+.product-price{
+  color: #d53b2a;
+  font-weight: 600;
+}
+.more-product-btn:hover {
+  color: var(--second-color);
+  background-color: var(--main-color);
+}

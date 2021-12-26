@@ -1,0 +1,33 @@
+.transaction-date {
+  font-size: 1.5rem;
+  text-align: right;
+}
+
+.transaction-info-title {
+  text-transform: uppercase;
+}
+
+.transaction-info-item {
+  font-size: 1.5rem;
+  background-color: var(--main-bg-color);
+  padding: 1rem 3rem;
+  border-radius: 4px;
+}
+
+#receiver-name {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.money-container, .money-container tr {
+  border: none !important;
+}
+
+.money-container td {
+  text-align: right;
+}
+
+#total-money {
+  font-size: 1.8rem;
+  color: var(--danger-color);
+}

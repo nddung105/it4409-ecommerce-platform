@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Không tìm thấy trang yêu cầu | 404 Error | eShop</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/customer/logo200px.png" >
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="../css/customer/style.css" rel="stylesheet" type="text/css">
+    <script src="https://kit.fontawesome.com/aa8e5675e3.js" crossorigin="anonymous"></script>
+
+    <!--  -->
+    <link rel="stylesheet" type="text/css" href="../css/customer/error_page.css">
+  </head>
+  <body class="overlay-scrollbar">
+    <header class="header" id="header">
+      <!-- navbar -->
+      
+      <div class="navbar">
+        <ul class="navbar-nav">
+          <li class="navbar-item" id="navbar-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars navbar-icon"></i>
+          </li>
+          <li class="navbar-item">
+            <a href="#"><img src="../assets/customer/logo-side1200_400px.png" alt="logo eshop" class="logo"></a>
+          </li>
+        </ul> 
+
+        <ul class="navbar-nav navbar-tab">
+          <li class="navbar-item">
+            <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" class="navbar-item-link" title="Liên hệ">Liên hệ</a>
+          </li>
+        </ul> 
+
+        <div class="search-form-desktop">
+          <form action="/pages/search-results-page" class="search-form">
+              <input type="text" aria-label="Search products" placeholder="Tìm sản phẩm" class="search-input" id="search-input">
+              <button class="search-button" type="submit" aria-label="Search">
+                  <span class="search-icon"><i class="fas fa-search"></i></span>
+              </button>
+          </form>
+        </div>
+        
+        <ul class="navbar-nav">
+          <li class="navbar-item dropdown search-form-mobile">
+            <i class="fas fa-search navbar-search-icon navbar-icon dropdown-toggle" data-toggle="search-menu" title="Tìm kiếm"></i>
+            
+            <div id="search-menu" class="dropdown-menu search-bar">
+              <form method="GET" action="Search" id="search-form" autocomplete="off">
+                <input type="search" placeholder="Nhập thông tin sản phẩm, danh mục" name="searchValue" id="search-bar">
+                <input type="submit" value="Tìm kiếm" id="search-button">
+              </form>
+            </div>
+          </li>
+
+          <li class="navbar-item dropdown">
+            <i class="fas fa-user dropdown-toggle navbar-icon " data-toggle="user-menu" title="Tài khoản"></i>
+
+            <ul id="user-menu" class="dropdown-menu">
+              <li class="dropdown-menu-item">
+                <a href="user_info.html" class="dropdown-menu-link">
+                  <i class="fas fa-user"></i>
+                  <span>Thông tin tài khoản</span>
+                </a>
+              </li>
+              <li class="dropdown-menu-item">
+                <a href="history_transaction.html" class="dropdown-menu-link">
+                  <i class="fas fa-shopping-bag"></i>
+                  <span>Lịch sử mua hàng</span>
+                </a>
+              </li>
+              <li class="dropdown-menu-item">
+                <a href="index_notlogin.html" class="dropdown-menu-link">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>Đăng xuất</span>
+                </a>
+              </li>
+            </ul>
+
+          </li>
+          <li class="navbar-item">
+            <div class="login-button">
+              <a href=""><span>Đăng nhập/</span>
+                <span>Đăng ký</span>
+              </a>              
+            </div>
+          </li>
+
+          <li class="navbar-item">
+            <div class="cart-wrapper">
+              <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng"></i>
+              <span class="cart-number-product">100</span>
+            </div>
+          </li>
+        </ul> 
+        
+      </div>
+      <div class="navbar-column" id="navbar-menu">
+        <ul class="navbar-nav-column ">
+          <li class="navbar-item-column">
+            <a href="index.html" class="navbar-link-column" title="Trang chủ">Trang chủ</a>
+          </li>
+          <li class="navbar-item-column">
+            <a href="#" class="navbar-link-column" title="Sản phẩm">Sản phẩm</a>
+          </li>
+          <li class="navbar-item-column">
+            <a href="#" class="navbar-link-column" title="Liên hệ">Liên hệ</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!-- <div class="loading-wrapper">
+      <img src="../assets/customer/loading5.gif">
+    </div> -->
+
+
+
+
+    <main class="main-content">
+      <h2 class="notice">Xin lỗi, trang bạn đang tìm kiếm không tồn tại!</h2>
+      <img src="../assets/customer/404.svg" class="img-notice">
+      <a class="go-back-link" href="index.html">Quay về Trang Chủ</a>
+    </main>
+
+
+    <footer class="footer">
+      <hr>
+      <div class="footer-info-container">
+        <div class="footer-info-column">
+          <p class="footer-info-title">Về chúng tôi</p>
+          <ul>
+            <li class="footer-info-item">Giới thiệu</li>
+            <li class="footer-info-item">Chính sách bảo mật thông tin</li>
+          </ul>
+        </div>
+        <div class="footer-info-column">
+          <p class="footer-info-title">Hỗ trợ khách hàng</p>
+          <ul>
+            <li class="footer-info-item">Hướng dẫn đặt hàng</li>
+            <li class="footer-info-item">Hướng dẫn thanh toán</li>
+            <li class="footer-info-item">Chính sách đổi trả</li>
+            <li class="footer-info-item">
+              <a target="_blank" href="mailto:hotro@eshop.vn">Hỗ trợ khách hàng: hotro@eshop.vn</a>
+            </li>
+            <li class="footer-info-item">
+              <a target="_blank" href="mailto:hotro@eshop.vn">Báo lỗi hệ thống: system@eshop.vn</a>
+            </li>
+            
+          </ul>
+        </div>
+        <div class="footer-info-column">
+          <p class="footer-info-title">Liên hệ</p>
+          <ul>
+            <li class="footer-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <a target="_blank" href="https://www.google.com/maps/place/Nh%C3%A0+TC+Tr%C6%B0%E1%BB%9Dng+%C4%90%E1%BA%A1i+H%E1%BB%8Dc+B%C3%A1ch+Khoa+H%C3%A0+N%E1%BB%99i/@21.0026909,105.8443743,17z/data=!3m1!4b1!4m5!3m4!1s0x3135ac76a80aa08f:0x4ebcb2843f16b1c!8m2!3d21.0026909!4d105.846563">
+                104 Lê Thanh Nghị, Bách Khoa, Hai Bà Trưng, Hà Nội
+              </a>
+            </li>
+            <li class="footer-info-item">
+              <i class="fas fa-phone-alt"></i>
+              <a target="_blank" href="tel:0989123456">0989123456</a>
+            </li>
+            <li class="footer-info-item">
+              <i class="fas fa-envelope"></i>
+              <a target="_blank" href="mailto:eshop@gmail.com">eshop@gmail.com</a>
+            </li>
+            <li class="footer-info-item">
+              <a target="_blank" href="#" class="footer-link-icon"><i class="fab fa-facebook-square"></i></a>
+              <a target="_blank" href="#" class="footer-link-icon"><i class="fab fa-twitter-square"></i></a>
+              <a target="_blank" href="#" class="footer-link-icon"><i class="fab fa-instagram-square"></i></a>
+              <a target="_blank" href="#" class="footer-link-icon"><i class="fab fa-youtube-square"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div>Coppyright &copy; 2021, DQHT Team</div>
+    </footer>
+    <a id="go-to-head" onclick="topFunction()">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <script src="../js/customer/index.js"></script>
+    <script src="../js/customer/scrollToTop.js"></script>
+  </body>
+  
+</html>

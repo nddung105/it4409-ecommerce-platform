@@ -1,0 +1,146 @@
+
+.img-product-row {
+  height: 5rem;
+  width: 5rem;
+}
+
+.product-name-row {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.product-cart-table td {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+}
+
+hr.hr-break {
+  border: 2px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+/* address table */
+.address-table, .address-table tr{
+  border: none;
+}
+
+.address-table {
+  background-color: transparent;
+  width: 80%;
+}
+
+@media(max-width: 800px) {
+  .address-table {
+    width: 100%;
+  }
+}
+@media(max-width: 600px) {
+  .address-table td {
+    display: block;
+  }
+}
+
+.address-table > tr > td:first-child {
+  padding: 0 !important;
+}
+
+.address-table label {
+  font-weight: bold;
+}
+
+.address-table input, select, textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+select:invalid {
+  color: var(--light-second-color);
+}
+
+option {
+  color: var(--main-color);
+}
+
+option:disabled {
+  color: var(--light-second-color);
+  background-color: #ddd;
+}
+
+textarea {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.address-table input:focus, select:focus, textarea:focus {
+  border: 1.5px solid var(--main-color);
+}
+
+
+/* payment */
+.payment-method > label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+.payment-method img {
+  width: 4rem;
+  height: 4rem;
+}
+
+input[type=radio] {
+  display: inline-block;
+  transform: scale(2);
+  background-color: var(--primary-color);
+}
+
+.upcoming-feature {
+  opacity: 0.6;
+}
+
+.upcoming-feature > span:last-child {
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+
+#transaction-form .pay-link {
+  width: 50%;
+  margin: 4rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+
+@media(max-width: 820px) {
+  .side-container {
+    display: none;
+  }
+
+  #transaction-form .pay-link, #transaction-form .money-container {
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 4rem 0;
+  }
+
+  #transaction-form .pay-link {
+    width: 70%;
+  }
+}
+
+@media(min-width: 820px) {
+  #transaction-form .money-container {
+    display: none;
+  }
+}
