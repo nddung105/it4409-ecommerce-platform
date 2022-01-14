@@ -10,7 +10,10 @@ async function filterByProperties(req,res){
     const data = await Product.findAll({
       where:condition,
       limit:limit,
-      offset:offset
+      offset:offset,
+      order: [
+        ['id', 'ASC'],
+    ],
     })
 
     res.send(data)

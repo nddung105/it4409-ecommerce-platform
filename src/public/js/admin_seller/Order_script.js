@@ -96,7 +96,14 @@ window.addEventListener('resize', (event) =>{
 //Pagination
 
 var tableData2 =[
-
+	{
+		'id': '1',
+		'name': 'Abyss',
+		'email': '1@gmail.com',
+		'role' : "user",
+		'password': '123',
+		'created_at': '1/1/2000'
+	}
 ]
 
 
@@ -218,12 +225,12 @@ function buildTable() {
 		console.log(`adding data no ${i}`)
 		var product = myList[i]
 		var row = `<tr>
-				<td>${myList[i].ma}</td>
-				<td>${myList[i].ten}</td>
-				<td>${myList[i].gia}</td>
-				<td>${myList[i].loai}</td>
-				<td>${myList[i].hang}</td>
-				<td><span class="status completed" onclick="openProdDetail(${myList[i].ma})">Xem</span></td>
+				<td>${myList[i].id}</td>
+				<td>${myList[i].name}</td>
+				<td>${myList[i].email}</td>
+				<td>${myList[i].role}</td>
+				<td>${myList[i].password}</td>
+				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
 				// var detailTd = document.createElement("td")
 				// var detailBtn = document.createElement("span")
@@ -242,27 +249,118 @@ function buildTable() {
 }
 
 function openProdDetail(id){
-	localStorage.setItem("product2",JSON.stringify(tableData2.find(x => x.ma == id)))
-	console.log(tableData2.find(x => x.ma == id))
-	location.href="./AdminSys_QlySP_Edit.html";
+	localStorage.setItem("account",JSON.stringify(tableData2.find(x => x.id == id)))
+	console.log(tableData2.find(x => x.id == id))
+	location.href="../../../views/admin_seller/AdminSell_QlyOrder_Edit.html";
 	console.log(id);
 }
 
-//sortByPrice
-const priceSortBtn = document.querySelector('#content main .table-data .order table th i') 
-priceSortBtn.addEventListener('click', ()=>{
-	sortedData =[
-		{
-			'ma': '1',
-			'ten': "PS5",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},,]
-	state.querySet=sortedData
-	state.page = 1
-	console.log(state.querySet)
-	$('#table-body').empty()
-	buildTable()
-	console.log("Xoa data")
-})
+// //sortByPrice
+// const priceSortBtn = document.querySelector('#content main .table-data .order table th i') 
+// priceSortBtn.addEventListener('click', ()=>{
+// 	sortedData =[
+// 		{
+// 			'ma': '1',
+// 			'ten': "PS5",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '2',
+// 			'ten': "PS5",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '3',
+// 			'ten': "PS5",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '4',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '5',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '6',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '7',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '8',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '9',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '5',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '6',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '7',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '8',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},
+// 		{
+// 			'ma': '9',
+// 			'ten': "Magic Stick",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},]
+// 	state.querySet=sortedData
+// 	state.page = 1
+// 	console.log(state.querySet)
+// 	$('#table-body').empty()
+// 	buildTable()
+// 	console.log("Xoa data")
+// })

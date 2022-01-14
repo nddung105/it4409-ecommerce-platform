@@ -12,20 +12,23 @@ Product.init(
     },
     price: {
       type: DataTypes.DOUBLE,
-      // allowNull defaults to true
+      allowNull: false,
     },
     category: {
         type: DataTypes.STRING,
-        // allowNull defaults to true
+        allowNull: false,
       },
     brand: {
       type: DataTypes.STRING,
-      // allowNull defaults to true
+      allowNull: false,
     },
     description: {
         type: DataTypes.STRING,
-        // allowNull defaults to true
       },
+    image_link:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
 
   },
   {
