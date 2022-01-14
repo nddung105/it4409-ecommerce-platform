@@ -1,17 +1,36 @@
+require('dotenv').config()
 const multer = require('multer');
+const { v4: uuidv4 } = require('uuid');
+const multerS3 = require('multer-s3');
 
-//cấu hình lưu trữ file khi upload xong
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      //files khi upload xong sẽ nằm trong thư mục "uploads" này - các bạn có thể tự định nghĩa thư mục này
-      cb(null, 'files') 
+const s3 = require('../constants/s3');
+
+async function checkImage(file, cb) {
+  const fileTypes = /jpeg|jpg|png$/;
+  const extname = fileTypes.test(file.mimetype);
+  if (extname) {
+    return cb(null, true);
+  }
+  return cb('Error: Please make sure your image type is 1 of jpeg, jpg, png');
+}
+
+const uploadImage = (maxSize = 1000000, bucket = process.env.AWS_S3_BUCKET) => multer({
+  storage: multerS3({
+    s3,
+    bucket,
+    metadata(req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
     },
-    filename: function (req, file, cb) {
-      // tạo tên file = thời gian hiện tại nối với số ngẫu nhiên => tên file chắc chắn không bị trùng
-      const filename = Date.now() + '-' + Math.round(Math.random() * 1E9) 
-      cb(null, filename + '-' + file.originalname )
-    }
-  })
-//Khởi tạo middleware với cấu hình trên, lưu trên local của server khi dùng multer
-const upload = multer({ storage: storage })
-module.exports = upload
+    key(req, file, cb) {
+      const name = `${uuidv4()}_${file.originalname.toLowerCase()}`;
+      req[file.fieldname] = name;
+      cb(null, name);
+    },
+  }),
+  limits: { fileSize: maxSize },
+  fileFilter(req, file, cb) {
+    checkImage(file, cb);
+  },
+});
+
+module.exports = uploadImage;

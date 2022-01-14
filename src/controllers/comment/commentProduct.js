@@ -12,7 +12,7 @@ async function validateContent(content){
 
 async function commentProduct(req,res){
     const conmmentInfo = {
-        user_id:req.user.id,
+        // user_id:req.user.id,
         product_id: req.body.product_id,
         content: req.body.content,
         rate: req.body.rate

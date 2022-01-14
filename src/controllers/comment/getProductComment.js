@@ -2,7 +2,7 @@ const { abort } = require('../../utils/errors');
 const Comment = require('../../models/Comment');
 const { Op } = require("sequelize");
 
-async function getCommentComment(req,res){
+async function getProductComment(req,res){
     
     const limit = req.query.limit
     const offset = req.query.offset
@@ -14,4 +14,4 @@ async function getCommentComment(req,res){
     res.send(data)  
 }
 
-module.exports = getCommentComment;
+module.exports = getProductComment;
