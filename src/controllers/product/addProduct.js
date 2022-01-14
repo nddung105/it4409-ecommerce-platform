@@ -23,7 +23,7 @@ async function addProduct(req, res) {
 
   const file = req.file.location
   if(!file) {
-    abort(400,"Please upload file")
+    abort(400,"File not found")
   }
 
   const productInfo = {
@@ -32,7 +32,7 @@ async function addProduct(req, res) {
     category: req.body.category,
     brand: req.body.brand,
     description: req.body.description,
-    image_link: file
+    image_link:file.location
   };
 
   await validation(productInfo);
