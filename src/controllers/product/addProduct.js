@@ -21,7 +21,7 @@ async function validation(productInfo) {
 
 async function addProduct(req, res) {
 
-  const file = req.file.location
+  const file = req.file
   if(!file) {
     abort(400,"File not found")
   }
