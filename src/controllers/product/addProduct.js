@@ -21,7 +21,7 @@ async function validation(productInfo) {
 
 async function addProduct(req, res) {
 
-  const file = req.file
+  const file = req.file.location
   if(!file) {
     abort(400,"Please upload file")
   }
@@ -32,7 +32,7 @@ async function addProduct(req, res) {
     category: req.body.category,
     brand: req.body.brand,
     description: req.body.description,
-    file:file
+    image_link: file
   };
 
   await validation(productInfo);
