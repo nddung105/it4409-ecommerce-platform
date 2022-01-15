@@ -131,14 +131,14 @@
     </div> 
 
     <div class="info-container">
-      <div class="img-product-container">
-        <h2 class="product-name">Dell Latitude 7480 core i5-6300U, RAM 16GB DDR4, SSD 256GB</h2>
-        <img src="../assets/customer/product1.jpg" alt="product">
+      <div class="img-product-container" id="img-product-container">
+        <h2 class="product-name" id="product-name-responsive"></h2>
+        <img src="../assets/customer/product1.jpg" alt="product" id="product-image">
       </div>
       <div class="detail-container">
-        <h2 class="product-name">Dell Latitude 7480 core i5-6300U, RAM 16GB DDR4, SSD 256GB</h2>
-        <div class="product-price">
-          <p class="price-end">12.000.000 đ</p>
+        <h2 class="product-name" id="product-name"></h2>
+        <div class="product-price" >
+          <p class="price-end" id="product-price">12.000.000 đ</p>
         <!-- <p class="price-discount">
             <span>15.000.000 đ</span> | <span>-20%</span>
           </p>-->
@@ -159,7 +159,7 @@
 
     <div class="description-container">
       <h3 class="description-title">Mô tả sản phẩm</h3>
-      <p class="description-p">Laptop Dell Latitude E7280 Core i5 7300U/ Ram 8Gb/ SSD 256Gb/ Màn 12.5 inch HD
+      <p class="description-p" id="description-p">Laptop Dell Latitude E7280 Core i5 7300U/ Ram 8Gb/ SSD 256Gb/ Màn 12.5 inch HD
         Thiết kế
         
         Dell Latitude 7280 có vỏ máy được làm bằng hợp kim nhôm cao cấp và được sơn đen nhám nên cho cảm giác cầm nắm cực tốt, tăng sự chắc chắn và bền bỉ cho chiếc laptop này mà vẫn giữ được vẻ thanh lịch vốn có. Phần khung máy cũng được làm bằng hợp kim cao cấp khiến nó thậm chí vượt qua được cả bài test tiêu chuẩn MIL-STD 810G của quân đội Mỹ.
@@ -332,6 +332,71 @@
   <script src="../js/customer/index.js"></script>
   <script src="../js/customer/scrollToTop.js"></script>
   <script src="../js/customer/product.js"></script>
+
+  <script>
+    // Instantiate an new XHR Object
+    const xhr = new XMLHttpRequest();
+    let id = location.pathname.split('/').slice(-1);
+    console.log(id)
+    // Open an obejct (GET/POST, PATH,
+    // ASYN-TRUE/FALSE)
+    xhr.open("GET", "http://localhost:3000/api/v1/products/" + id, true);
+    
+    // When response is ready
+    xhr.onload = function () {
+        if (this.status === 200) {
+          console.log("got it")
+          // Changing string data into JSON Object
+          obj = JSON.parse(this.responseText);
+          console.log(obj)
+          const productname = document.getElementById('product-name');
+          productname.innerHTML = obj.name
+          const productnameresponsive = document.getElementById('product-name-responsive');
+          productnameresponsive.innerHTML = obj.name
+          const productprice = document.getElementById('product-price')
+          productprice.innerHTML = obj.price + ' đ'
+          const des = document.getElementById('description-p')
+          des.innerHTML = obj.description
+        }
+        else {
+            console.log("File not found");
+        }
+    }
+    xhr.send();
+  </script>
+  <script>
+    //GET RATE, COMMENT.
+    // Instantiate an new XHR Object
+    const xhr = new XMLHttpRequest();
+    let id = location.pathname.split('/').slice(-1);
+    console.log(id)
+    // Open an obejct (GET/POST, PATH,
+    // ASYN-TRUE/FALSE)
+    xhr.open("GET", "http://localhost:3000/api/v1/products/" + id, true);
+    
+    // When response is ready
+    xhr.onload = function () {
+        if (this.status === 200) {
+          console.log("got it")
+          // Changing string data into JSON Object
+          obj = JSON.parse(this.responseText);
+          console.log(obj)
+          const productname = document.getElementById('product-name');
+          productname.innerHTML = obj.name
+          const productnameresponsive = document.getElementById('product-name-responsive');
+          productnameresponsive.innerHTML = obj.name
+          const productprice = document.getElementById('product-price')
+          productprice.innerHTML = obj.price + ' đ'
+          const des = document.getElementById('description-p')
+          des.innerHTML = obj.description
+        }
+        else {
+            console.log("File not found");
+        }
+    }
+    xhr.send();
+  </script>
+
 </body>
 
 </html>
