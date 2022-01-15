@@ -95,10 +95,26 @@ window.addEventListener('resize', (event) =>{
 
 //Pagination
 
-var tableData2 =[
+let tableData2 =[
 
 ]
 
+//http://localhost:3000/api/v1/products?limit=4&offset=0
+$.ajax({
+	url: "http://localhost:3000/api/v1/products/",
+	type: 'GET',
+	dataType: 'json', // added data type
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		tableData2 = res
+		state.querySet=tableData2
+		state.page = 1
+		console.log(state.querySet)
+		$('#table-body').empty()
+		buildTable()
+	}
+});
 
 /*
 1 - Loop Through Array & Access each value
@@ -218,12 +234,12 @@ function buildTable() {
 		console.log(`adding data no ${i}`)
 		var product = myList[i]
 		var row = `<tr>
-				<td>${myList[i].ma}</td>
-				<td>${myList[i].ten}</td>
-				<td>${myList[i].gia}</td>
-				<td>${myList[i].loai}</td>
-				<td>${myList[i].hang}</td>
-				<td><span class="status completed" onclick="openProdDetail(${myList[i].ma})">Xem</span></td>
+				<td>${myList[i].id}</td>
+				<td>${myList[i].name}</td>
+				<td>${myList[i].price}</td>
+				<td>${myList[i].category}</td>
+				<td>${myList[i].brand}</td>
+				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
 				// var detailTd = document.createElement("td")
 				// var detailBtn = document.createElement("span")
@@ -242,8 +258,8 @@ function buildTable() {
 }
 
 function openProdDetail(id){
-	localStorage.setItem("product2",JSON.stringify(tableData2.find(x => x.ma == id)))
-	console.log(tableData2.find(x => x.ma == id))
+	localStorage.setItem("product2",JSON.stringify(tableData2.find(x => x.id == id)))
+	console.log(tableData2.find(x => x.id == id))
 	location.href="./AdminSys_QlySP_Edit.html";
 	console.log(id);
 }
