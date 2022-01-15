@@ -126,6 +126,11 @@ createDate.innerHTML = today
 
 //save
 saveBtn = document.getElementById("saveBtn")
+const inputElement = document.getElementById("myfile");
+inputElement.addEventListener("change", handleFiles, false);
+function handleFiles() {
+    const fileList = this.files;
+}
 //call Api
 saveBtn.addEventListener('click', () =>{
     Confirm.open({
@@ -140,24 +145,29 @@ saveBtn.addEventListener('click', () =>{
                 "category":document.getElementById("category").value,
                 "brand":document.getElementById("brand").value,
                 "description":document.getElementById("descrip").value,
-                "image_link":"https://s3.ap-southeast-1.amazonaws.com/computer-ecommerce/aad6f126-5d4a-449f-8779-e14b07a5a1a9_screenshot%20from%202022-01-11%2007-59-18.png"
+                "myfile": inputElement.files[0]
             }
-
             // values = JSON.stringify(values);
+            var formData = new FormData()
+            formData.append("name",document.getElementById("name").value)
+            formData.append("price",parseInt(document.getElementById("price").value))
+            formData.append("category",document.getElementById("category").value)
+            formData.append("brand",document.getElementById("brand").value)
+            formData.append("description",document.getElementById("descrip").value)
+            formData.append("myfile",inputElement.files[0])
 
             $.ajax({
                 type: 'POST',
                 url: "http://localhost:3000/api/v1/products/",
-                data: JSON.stringify(values),
+                data: formData,
                 error: function(e) {
                   console.log(e);
                 },
-                dataType: "json",
-                contentType: "application/json"
+                processData: false,
+                contentType: false,
               });
               //tam thoi k cum back ve trang chu
         //   location.href="./AdminSys_QlySP.html";
-            console.log(values)
         }
       })
 	//post api
