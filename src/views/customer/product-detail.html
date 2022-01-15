@@ -185,20 +185,20 @@
       <h3 class="description-title">Đánh giá của khách hàng</h3>
       <div class="star-vote-container">
         <div class="star-votes">
-          <div class="star-vote">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+          <div class="star-vote" id="star-vote">
+            <span class="fa fa-star checked" id="1"></span>
+            <span class="fa fa-star " id="2"></span>
+            <span class="fa fa-star " id="3"></span>
+            <span class="fa fa-star " id="4"></span>
+            <span class="fa fa-star" id="5"></span>
           </div>        
-          <span>15 đánh giá</span>
+          <span id="numberofcomments">15 đánh giá</span>
         </div>
         <a href="" class="btn-vote">Viết đánh giá</a>
 
       </div>
 
-      <div class="reviews">
+      <div class="reviews" id="reviews">
         <div class="review">
           <div class="star-votes">
             <span class="user-name">Nguyen Kim Tung</span>
@@ -212,34 +212,41 @@
             
           </div>
           <p class="review-content">San pham that tuyet voi!!!</p>
-      </div>
-      <div class="review">
-        <div class="star-votes">
-          <span class="user-name">Nguyen Kim Tung</span>
-          <div class="star-vote">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-          </div>   
+          <div class="reply">
+            <i class="fas fa-reply"></i>
+            <div class="reply-content">
+              <span class="admin-name">Admin</span>
+              <span class="admin-reply">Cam on ban!</span>
+            </div>
+          </div>
+        </div>
+        <div class="review">
+          <div class="star-votes">
+            <span class="user-name">Nguyen Kim Tung</span>
+            <div class="star-vote" >
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>   
+            
+          </div>
+          <p class="review-content">San pham that tuyet voi!!!</p>
+          <div class="reply">
+            <i class="fas fa-reply"></i>
+            <div class="reply-content">
+              <span class="admin-name">Admin</span>
+              <span class="admin-reply">Cam on ban!</span>
+            </div>
+          </div>
           
         </div>
-        <p class="review-content">San pham that tuyet voi!!!</p>
-    </div>
     </div>
 
-    
-    <div class="comment-box">
+    <!--
+          <div class="comment-box">
       <h3 class="description-title">Bình luận</h3>
-      <!--
-        <div class="your-cmt">
-        <span>Bình luận của bạn</span>
-        <form action="" class="comment">
-          <input type="text" name="" id="">
-        </form>
-      </div>
-      -->
       
       <a href="" class="btn-vote" id="btn-cmt">Viết bình luận</a>
       <div class="reviews">
@@ -268,6 +275,9 @@
     </div>
     </div>
     </div>
+
+    -->
+
   </main>
 
   <footer class="footer">
@@ -334,6 +344,7 @@
   <script src="../js/customer/product.js"></script>
 
   <script>
+    //PRODUCT
     // Instantiate an new XHR Object
     const xhr = new XMLHttpRequest();
     let id = location.pathname.split('/').slice(-1);
@@ -363,38 +374,72 @@
         }
     }
     xhr.send();
-  </script>
-  <script>
-    //GET RATE, COMMENT.
-    // Instantiate an new XHR Object
-    const xhr = new XMLHttpRequest();
-    let id = location.pathname.split('/').slice(-1);
-    console.log(id)
+
+
+    //COMMENTS
+    const cmt = new XMLHttpRequest();
+    // let id = location.pathname.split('/').slice(-1);
+    // console.log(id)
     // Open an obejct (GET/POST, PATH,
     // ASYN-TRUE/FALSE)
-    xhr.open("GET", "http://localhost:3000/api/v1/products/" + id, true);
+    cmt.open("GET", "http://localhost:3000/api/v1/comments?product_id="+id, true);
     
     // When response is ready
-    xhr.onload = function () {
+    cmt.onload = function () {
         if (this.status === 200) {
           console.log("got it")
           // Changing string data into JSON Object
           obj = JSON.parse(this.responseText);
           console.log(obj)
-          const productname = document.getElementById('product-name');
-          productname.innerHTML = obj.name
-          const productnameresponsive = document.getElementById('product-name-responsive');
-          productnameresponsive.innerHTML = obj.name
-          const productprice = document.getElementById('product-price')
-          productprice.innerHTML = obj.price + ' đ'
-          const des = document.getElementById('description-p')
-          des.innerHTML = obj.description
+          // So luong danh gia
+          const numberOfComments = document.getElementById('numberofcomments');
+          numberOfComments.innerHTML = obj.total + " đánh giá";
+          // Danh gia trung binh
+          const rate = obj.rate;
+          const starvote = document.getElementById(rate.toString());
+          for(var i = 1; i<=rate; i++){
+            var star = document.getElementById(i.toString());
+            star.classList.add("checked")
+          }
+          //Binh luan
+          const comments = obj.data;
+          const reviews = document.getElementById("reviews");
+          
+          str = "";
+          for(var i = 0; i<comments.length; i++){
+            console.log(comments[i].rate)
+            stars = "";
+            stringID = comments[i].id.toString();
+            stars += `<div class="review" id=${stringID}>
+                        <div class="star-votes">
+                            <span class="user-name">Nguyen Kim Tung</span>
+                            <div class="star-vote">
+              `;
+            for(var j=1; j<=comments[i].rate; j++){
+              stars += `<span class="fa fa-star checked"></span>`;
+              //console.log(stars);
+            }
+
+            stars += `
+                  </div>  
+                </div>`
+            console.log(stars)
+            stars +=` <p class="review-content">${comments[i].content}</p>`
+            stars+=`
+              </div>
+            `
+            //console.log(stars)
+            //CONTENT
+            
+            str+= stars
+          }
+          reviews.innerHTML= str;
         }
         else {
             console.log("File not found");
         }
     }
-    xhr.send();
+    cmt.send();
   </script>
 
 </body>
