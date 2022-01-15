@@ -132,18 +132,37 @@ saveBtn.addEventListener('click', () =>{
 		}
 	else{
 		//call api to update
-        let newProd ={
-
+        var values = {
+            "name":document.getElementById("name").value,
+            "price":document.getElementById("price").value,
+            "category":document.getElementById("category").value,
+            "brand":document.getElementById("brand").value,
+            "description":document.getElementById("descrip").value,
+            "image_link":"https://s3.ap-southeast-1.amazonaws.com/computer-ecommerce/aad6f126-5d4a-449f-8779-e14b07a5a1a9_screenshot%20from%202022-01-11%2007-59-18.png"
         }
 
-        // $.ajax({
-        //     url: 'http://localhost:3000/api/v1/products/',
-        //     type: 'PUT',
-        //     data: ,
-        //     success: function(data) {
-        //       alert('Load was performed.');
-        //     }
-        //   });
+        values = JSON.stringify(values);
+        console.log(values)
+        // {
+        //     "id": 3,
+        //     "name": "hoaaaang",
+        //     "price": 12,
+        //     "category": "aa",
+        //     "brand": "afasa",
+        //     "description": "asdas",
+        //     "image_link": null
+        // }
+
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/products/' + product.id,
+            type: 'put',
+            data: values,
+            dataType: 'json',
+            contentType:'application/json',
+            success: function(data) {
+            //   alert('Load was performed.');
+            }
+          });
 	}
 	location.href="./AdminSys_QlySP.html",true;
 	console.log("back")
