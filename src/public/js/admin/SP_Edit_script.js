@@ -95,17 +95,17 @@ window.addEventListener('resize', (event) =>{
 
 //getData from click
 product = JSON.parse(localStorage.getItem("product2"))
-document.querySelector(".breadcrumb li:nth-child(3) a").innerHTML = "Sản phẩm ID " + product.ma
-document.querySelector("#bigTitle").innerHTML = product.ten
-document.getElementById("name").placeholder= product.ten
-document.getElementById("price").placeholder= product.gia
-document.getElementById("category").placeholder= product.loai
-document.getElementById("brand").placeholder= product.hang
+document.querySelector(".breadcrumb li:nth-child(3) a").innerHTML = "Sản phẩm ID " + product.id
+document.querySelector("#bigTitle").innerHTML = product.name
+document.getElementById("name").placeholder= product.name
+document.getElementById("price").placeholder= product.price
+document.getElementById("category").placeholder= product.category
+document.getElementById("brand").placeholder= product.brand
 
-document.getElementById("name").value= product.ten
-document.getElementById("price").value= product.gia
-document.getElementById("category").value= product.loai
-document.getElementById("brand").value= product.hang
+document.getElementById("name").value= product.name
+document.getElementById("price").value= product.price
+document.getElementById("category").value= product.category
+document.getElementById("brand").value= product.brand
 
 var prodname = document.getElementById("name")
 var price = document.getElementById("price")
@@ -122,10 +122,10 @@ saveBtn = document.getElementById("saveBtn")
 saveBtn.addEventListener('click', () =>{
 	//call api
 	//not change
-	if(prodname.value === product.ten &&
-		price.value === product.gia &&
-		category.value === product.loai &&
-		brand.value === product.hang &&
+	if(prodname.value === product.name &&
+		price.value === product.price &&
+		category.value === product.category &&
+		brand.value === product.brand &&
 		descrip.value === ""
 		){
 			//do nothing
