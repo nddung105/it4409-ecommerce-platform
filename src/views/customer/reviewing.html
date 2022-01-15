@@ -130,7 +130,7 @@
           <h2>Đánh giá sản phẩm</h2>
         </div>
         <div class="review-form">
-          <form action="">
+
             <div class="star-rating">
               <div class="reviewStars">
                 <span data-rating="1"><i class="far fa-star"></i></span>
@@ -141,13 +141,18 @@
               </div>
             </div>
             
-            <label for="review-content">Đánh giá của bạn</label>
+            <label for="review-content" class="label-item">Đánh giá của bạn</label>
             <br>
             <textarea name="review-content" id="review-content" placeholder="Hãy cho chúng tôi biết đánh giá của bạn về sản phẩm"></textarea>
-            <input type="submit" value="Gửi đánh giá" id="submit-review">
-            <!--<a href="" class="btn-vote" id="btn-review">Gửi đánh giá</a>-->
             
-          </form>
+            <label for="name" class="label-item">Tên</label>
+            <input type="text" name="name" id="name">
+
+            <label for="email" class="label-item">Email</label>
+            <input type="text" name="email" id="email">
+            <!--<a href="" class="btn-vote" id="btn-review">Gửi đánh giá</a>-->
+            <button id="submit-review">Gửi đánh giá</button>
+          
         </div>
 
       </div>
@@ -217,6 +222,46 @@
     <script src="../js/customer/scrollToTop.js"></script>
     <script src="../js/customer/product.js"></script>
     <script src="../js/customer/reviewing.js"></script>
+
+    <script>
+      let rate = document.getElementsByClassName("fas fa-star").length;
+      console.log(rate)
+      // Instantiate an new XHR Object
+      document.getElementById("submit-review").addEventListener('click', () =>{
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const reviewcontent = document.getElementById("review-content").value;
+        console.log(name, email, reviewcontent)
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/api/v1/comments/?product_id=2");
+
+          xhr.setRequestHeader("Accept", "application/json");
+          xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+          let data = JSON.stringify({
+            rate:rate,
+            name:name,
+            email:email,
+            reviewcontent: reviewcontent
+          });
+          // data = {
+          //     "product_id":2,
+          //     "content":"ha ha",
+          //     "rate":5,
+          //     "email":"hoangnsv@gmail.com",
+          //     "name":"viethoang"
+          // }
+          xhr.onload=function(){
+            console.log(xhr.response)
+          }
+
+          console.log(typeof(data));
+          xhr.send(data);
+
+          
+      })
+      
+    </script>
   </body>
   
 </html>
