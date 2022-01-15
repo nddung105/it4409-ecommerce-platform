@@ -106,7 +106,7 @@ document.getElementById("name").value= product.name
 document.getElementById("price").value= product.price
 document.getElementById("category").value= product.category
 document.getElementById("brand").value= product.brand
-
+document.getElementById("descrip").value= product.description
 var prodname = document.getElementById("name")
 var price = document.getElementById("price")
 var category = document.getElementById("category")
@@ -132,6 +132,18 @@ saveBtn.addEventListener('click', () =>{
 		}
 	else{
 		//call api to update
+        let newProd ={
+
+        }
+
+        // $.ajax({
+        //     url: 'http://localhost:3000/api/v1/products/',
+        //     type: 'PUT',
+        //     data: ,
+        //     success: function(data) {
+        //       alert('Load was performed.');
+        //     }
+        //   });
 	}
 	location.href="./AdminSys_QlySP.html",true;
 	console.log("back")
@@ -214,6 +226,13 @@ delBtn.addEventListener('click', () => {
       message: 'Bạn có chắc muốn xóa sản phẩm này chứ?',
       onok: () => {
         //call api xoa
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/products/' + product.id,
+            type: 'DELETE',
+            success: function(result) {
+                // Do something with the result
+            }
+        });
         location.href="./AdminSys_QlySP.html";
       }
     })

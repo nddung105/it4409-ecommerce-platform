@@ -133,6 +133,30 @@ saveBtn.addEventListener('click', () =>{
         message: 'Bạn có chắc muốn thêm sản phẩm này chứ?',
         onok: () => {
           //call api post
+            var values = {
+                "id":50,
+                "name":document.getElementById("name").value,
+                "price":document.getElementById("price").value,
+                "category":document.getElementById("category").value,
+                "brand":document.getElementById("brand").value,
+                "description":document.getElementById("descrip").value,
+                "image_link":"https://s3.ap-southeast-1.amazonaws.com/computer-ecommerce/aad6f126-5d4a-449f-8779-e14b07a5a1a9_screenshot%20from%202022-01-11%2007-59-18.png"
+            }
+
+            values = JSON.stringify(values);
+
+            $.ajax({
+                    url: "http://localhost:3000/api/v1/products/",
+                    type: "post",
+                    data: values ,
+                    success: function (response) {
+
+                    // You will get response from your PHP page (what you echo or print)
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                    }
+                });
           location.href="./AdminSys_QlySP.html";
         }
       })
