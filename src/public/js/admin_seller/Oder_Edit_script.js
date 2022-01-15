@@ -94,32 +94,24 @@ window.addEventListener('resize', (event) =>{
 
 
 //getData from click
-// product = JSON.parse(localStorage.getItem("product2"))
-// document.querySelector(".breadcrumb li:nth-child(3) a").innerHTML = "Sản phẩm ID " + product.ma
-// document.querySelector("#bigTitle").innerHTML = product.ten
+account = JSON.parse(localStorage.getItem("account"))
+document.querySelector(".breadcrumb li:nth-child(3) a").innerHTML = "Tài khoản ID " + account.id
+document.querySelector("#bigTitle").innerHTML = account.name
 // document.getElementById("name").placeholder= product.ten
 // document.getElementById("price").placeholder= product.gia
 // document.getElementById("category").placeholder= product.loai
 // document.getElementById("brand").placeholder= product.hang
 
-// document.getElementById("name").value= product.ten
-// document.getElementById("price").value= product.gia
-// document.getElementById("category").value= product.loai
-// document.getElementById("brand").value= product.hang
-
-var prodname = document.getElementById("name")
-var price = document.getElementById("price")
-var category = document.getElementById("category")
-var brand = document.getElementById("brand")
-var descrip = document.getElementById("descrip")
-
-var createDate = document.getElementById("createDate")
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-today = dd + '/' + mm + '/' + yyyy;
-createDate.innerHTML = today
+document.getElementById("name").value= account.name
+document.getElementById("email").value= account.email
+document.getElementById("role").value= account.role
+document.getElementById("pass").value= account.password
+document.getElementById("createDate").innerHTML= account.created_at
+// var prodname = document.getElementById("name")
+// var price = document.getElementById("price")
+// var category = document.getElementById("category")
+// var brand = document.getElementById("brand")
+// var descrip = document.getElementById("descrip")
 //them cac thong tin o day
 
 //
@@ -128,44 +120,27 @@ createDate.innerHTML = today
 saveBtn = document.getElementById("saveBtn")
 //call Api
 saveBtn.addEventListener('click', () =>{
-    Confirm.open({
-        title: 'Xác nhận thêm sản phẩm',
-        message: 'Bạn có chắc muốn thêm sản phẩm này chứ?',
-        onok: () => {
-          //call api post
-            var values = {
-                "id": 50,
-                "name":document.getElementById("name").value,
-                "price":parseInt(document.getElementById("price").value),
-                "category":document.getElementById("category").value,
-                "brand":document.getElementById("brand").value,
-                "description":document.getElementById("descrip").value,
-                "image_link":"https://s3.ap-southeast-1.amazonaws.com/computer-ecommerce/aad6f126-5d4a-449f-8779-e14b07a5a1a9_screenshot%20from%202022-01-11%2007-59-18.png"
-            }
-
-            // values = JSON.stringify(values);
-
-            $.ajax({
-                type: 'POST',
-                url: "http://localhost:3000/api/v1/products/",
-                data: JSON.stringify(values),
-                error: function(e) {
-                  console.log(e);
-                },
-                dataType: "json",
-                contentType: "application/json"
-              });
-              //tam thoi k cum back ve trang chu
-        //   location.href="./AdminSys_QlySP.html";
-            console.log(values)
-        }
-      })
-	//post api
+	//call api
+	//not change
+	// if(prodname.value === product.ten &&
+	// 	price.value === product.gia &&
+	// 	category.value === product.loai &&
+	// 	brand.value === product.hang &&
+	// 	descrip.value === ""
+	// 	){
+	// 		//do nothing
+	// 	}
+	// else{
+	// 	//call api to update
+	// }
+	location.href="../../../views/admin_seller/AdminSell_QlyOrder.html",true;
 	console.log("back")
 })
 //
 
 //delete
+delBtn = document.querySelector(".btn-delete")
+
 const Confirm = {
     open (options) {
         options = Object.assign({}, {
@@ -233,3 +208,13 @@ const Confirm = {
     }
 };
 
+delBtn.addEventListener('click', () => {
+    Confirm.open({
+      title: 'Xác nhận xóa tài khoản',
+      message: 'Bạn có chắc muốn xóa tài khoản này chứ?',
+      onok: () => {
+        //call api xoa
+        location.href="../../../views/admin_seller/AdminSell_QlyOrder.html";
+      }
+    })
+  });

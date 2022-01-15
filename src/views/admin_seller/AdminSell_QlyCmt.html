@@ -7,7 +7,7 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../css/admin/style.css">
+	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<title>Admin</title>
 </head>
@@ -21,22 +21,22 @@
 			<span class="text">Tên web</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<!-- <li>
 				<a href="AdminSys_TKe.html">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Thống kê</span>
 				</a>
-			</li>
-			<li>
-				<a href="AdminSys_QlySP.html">
+			</li> -->
+			<li class="active">
+				<a href="AdminSell_QlyCmt.html">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Quản lý sản phẩm</span>
+					<span class="text">Quản lý bình luận</span>
 				</a>
 			</li>
-			<li class="active">
-				<a href="AdminSys_QlyAcc.html">
+			<li>
+				<a href="AdminSell_QlyOrder.html">
 					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Quản lý tài khoản</span>
+					<span class="text">Quản lý hóa đơn</span>
 				</a>
 			</li>
 			<!-- <li>
@@ -99,24 +99,24 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Thêm tài khoản</h1>
+					<h1>Quản lý bình luận</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a class ="active" href="AdminSys_QlyAcc.html">Quản lý tài khoản</a>
+							<a href="#">Quản lý bình luận</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a href="#">Thêm tài khoản</a>
+							<a class="active" href="AdminSell_QlyCmt.html">Trang chủ</a>
 						</li>
 					</ul>
 				</div>
-				<!-- <a href="#" class="btn-delete">
-					<i class='bx bxs-message-square-x'></i>
-					<span id="deleteBtn" class="text">Xóa tài khoản</span>
+				<!-- <a href="AdminSys_QlySP_Add.html" class="btn-download">
+					<i class='bx bx-book-add'></i>
+					<span class="text">Thêm sản phẩm</span>
 				</a> -->
 			</div>
 
-			<!-- <ul class="box-info">
+			<ul class="box-info">
 				<li>
 					<i class='bx bx-face' ></i>
 					<span class="text">
@@ -134,88 +134,101 @@
 				<li>
 					<i class='bx bxs-dollar-circle' ></i>
 					<span class="text">
-						<h3>$2543</h3>
-						<p>Doanh thu</p>
+						<h3>123</h3>
+						<p>Số bình luận chưa trả lời</p>
 					</span>
 				</li>
-			</ul> -->
+			</ul>
 
 
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Thêm mới tài khoản</h3>
-						<!-- <form action="#">
+						<h3>Danh sách bình luận</h3>
+						<form action="#">
 							<div class="form-input">
 								<input type="search" placeholder="Tìm kiếm...">
 								<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
 							</div>
-						</form> -->
+						</form>
 						<!-- <i class='bx bx-search' ></i> -->
-						<!-- <i class='bx bx-filter' ></i> -->
+						<i class='bx bx-filter' ></i>
 					</div>
-					<div class="container">
-						<div id="bigTitle" class="title"></div>
-						<div class="content">
-						  <form action="#">
-							<div class ="spanOfImg">
-								<img class="prodImg" src="#">
-								<i class='bx bx-edit-alt'></i>
-								<input class="uploadImg" type='file' />
-							</div>
-							<div class="user-details">
-							  <div class="input-box">
-								<span class="details">Tên</span>
-								<input id ="name" type="text" placeholder="Tên" required>
-							  </div>
-							  <div class="input-box">
-								<span  class="details">Email</span>
-								<input id ="email" type="text" placeholder="Email" required>
-							  </div>
-							  <div class="input-box">
-								<span  class="details">Vai trò</span>
-								<input id="role" type="text" placeholder="Vai trò" required>
-							  </div>
-							  <div class="input-box">
-								<span class="details">Mật khẩu</span>
-								<input id="pass" type="text" placeholder="Mật khẩu" required>
-							  </div>
-							  <!-- <div class="input-box descrip-box">
-								<span class="details">Miêu tả</span>
-								<textarea id="descrip" name="Text1" rows="5"></textarea>
-
-							  </div> -->
-							  <!-- <div class="input-box">
-								<span class="details">Confirm Password</span>
-								<input type="text" placeholder="Confirm your password" required>
-							  </div> -->
-							</div>
-							<div class="gender-details">
-							  <!-- <input type="radio" name="gender" id="dot-1">
-							  <input type="radio" name="gender" id="dot-2">
-							  <input type="radio" name="gender" id="dot-3"> -->
-							  <!-- <span class="gender-title">Thông tin khác</span> -->
-							  <div class="category">
-								
-								<label for="dot-3">
-									<!-- <span class="dot three"></span> -->
-									<span class="gender">Ngày tạo: </span>
-									<span id="createDate" class="gender">20/10/1999</span>
-									</label>
-							  </div>
-							</div>
-							<div id ="saveBtn" class="button">
-							  <input type="reset" value="Lưu">
-							</div>
-						  </form>
-						</div>
-					  </div>
+					<table>
+						<thead>
+							<tr>
+								<th>Mã bình luận</th>
+								<th>Mã sản phẩm</th>
+								<th>Mã người dùng</th>
+								<th>Đã trả lời</th>
+								<th>Ngày tạo</th>
+								<th>Chi tiết</th>
+							</tr>
+						</thead>
+						<tbody id="table-body">
+							
+						</tbody>
+					</table>
 				</div>
 				
-				
+				<!-- <div class="todo">
+					<div class="head">
+						<h3>Todos</h3>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<ul class="todo-list">
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+						<li class="not-completed">
+							<p>Todo List</p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+						</li>
+					</ul>
+				</div> -->
 			</div>
 
-			
+			<!-- Set width <100% se fix dc loi responsive cua chart.js -->
+			<!-- <div class ="charts">
+				<div class ="chart" style="position: relative; max-height:800px; width:99%; ">
+					<h2>Doanh thu (12 tháng)</h2>
+					<canvas id="lineChart" ></canvas>
+				</div>
+				<div class="chart" id="doughnut-chart" style="position: relative; max-height:800px; width:99%; ">
+					<h2>Độ tuổi người dùng</h2>
+					<canvas id="doughnut" ></canvas>
+				</div>
+			</div> -->
+
+			<!-- Co toi da 5 page hien thi -->
+			<input class="forPaginate" type="radio" name="input-paginacao" id="paginacao1" checked>
+			<input class="forPaginate" type="radio" name="input-paginacao" id="paginacao2">
+			<input class="forPaginate" type="radio" name="input-paginacao" id="paginacao3">
+			<input class="forPaginate" type="radio" name="input-paginacao" id="paginacao4">
+			<input class="forPaginate" type="radio" name="input-paginacao" id="paginacao5">
+
+			<div class="pagination-container">
+				<div class="btn-paginacao">
+					<ul id="pagination-wrapper">
+
+					</ul>
+				</div>
+
+			</div>
 			
 		</main>
 		<!-- MAIN -->
@@ -223,7 +236,6 @@
 	<!-- CONTENT -->
 	
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
-	<script src="../js/admin/Acc_Add_script.js"></script>
-
+	<script src="../js/admin_seller/Cmt_script.js"></script>
 </body>
 </html>

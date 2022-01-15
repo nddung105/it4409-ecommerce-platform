@@ -7,7 +7,7 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../css/admin/style.css">
+	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<title>Admin</title>
 </head>
@@ -21,22 +21,22 @@
 			<span class="text">Tên web</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<!-- <li>
 				<a href="AdminSys_TKe.html">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Thống kê</span>
 				</a>
-			</li>
+			</li> -->
 			<li>
-				<a href="AdminSys_QlySP.html">
+				<a href="AdminSell_QlyCmt.html">
 					<i class='bx bxs-shopping-bag-alt' ></i>
-					<span class="text">Quản lý sản phẩm</span>
+					<span class="text">Quản lý bình luận</span>
 				</a>
 			</li>
 			<li class="active">
-				<a href="AdminSys_QlyAcc.html">
+				<a href="AdminSell_QlyOrder.html">
 					<i class='bx bxs-doughnut-chart' ></i>
-					<span class="text">Quản lý tài khoản</span>
+					<span class="text">Quản lý hóa đơn</span>
 				</a>
 			</li>
 			<!-- <li>
@@ -99,14 +99,14 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Thêm tài khoản</h1>
+					<h1>Quản lý hóa đơn</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a class ="active" href="AdminSys_QlyAcc.html">Quản lý tài khoản</a>
+							<a class ="active" href="AdminSell_QlyOrder.html">Quản lý hóa đơn</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
-							<a href="#">Thêm tài khoản</a>
+							<a href="#">Tài khoản ID 11223</a>
 						</li>
 					</ul>
 				</div>
@@ -144,7 +144,7 @@
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Thêm mới tài khoản</h3>
+						<h3>Chi tiết hóa đơn</h3>
 						<!-- <form action="#">
 							<div class="form-input">
 								<input type="search" placeholder="Tìm kiếm...">
@@ -155,30 +155,49 @@
 						<!-- <i class='bx bx-filter' ></i> -->
 					</div>
 					<div class="container">
-						<div id="bigTitle" class="title"></div>
+						<div id="bigTitle" class="title">Magic Stick</div>
 						<div class="content">
 						  <form action="#">
 							<div class ="spanOfImg">
-								<img class="prodImg" src="#">
+								<img class="prodImg" src="img/magicstick.jpg">
 								<i class='bx bx-edit-alt'></i>
-								<input class="uploadImg" type='file' />
 							</div>
 							<div class="user-details">
 							  <div class="input-box">
-								<span class="details">Tên</span>
-								<input id ="name" type="text" placeholder="Tên" required>
+								<span class="details">Mã hóa đơn</span>
+								<input id ="name" type="text" placeholder="Mã hóa đơn" required>
 							  </div>
 							  <div class="input-box">
-								<span  class="details">Email</span>
-								<input id ="email" type="text" placeholder="Email" required>
+								<span  class="details">Mã người dùng</span>
+								<input id ="email" type="text" placeholder="Mã người dùng" required>
 							  </div>
 							  <div class="input-box">
-								<span  class="details">Vai trò</span>
-								<input id="role" type="text" placeholder="Vai trò" required>
+								<span  class="details">Mã sản phẩm</span>
+								<input id ="product_order" type="text" placeholder="Mã sản phẩm" required>
 							  </div>
 							  <div class="input-box">
-								<span class="details">Mật khẩu</span>
-								<input id="pass" type="text" placeholder="Mật khẩu" required>
+								<span  class="details">Số lượng</span>
+								<input id ="quantity" type="text" placeholder="Số lượng" required>
+							  </div>
+							  <div class="input-box">
+								<span  class="details">Tổng tiền</span>
+								<input id ="totalMoney" type="text" placeholder="Tổng tiền" required>
+							  </div>
+							  <div class="input-box">
+								<span  class="details">Tên đầy đủ</span>
+								<input id="role" type="text" placeholder="Tên đầy đủ" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Địa chỉ</span>
+								<input id="pass" type="text" placeholder="Địa chỉ" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Số điện thoại</span>
+								<input id="pass" type="text" placeholder="Số điện thoại" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Trạng thái</span>
+								<input id="pass" type="text" placeholder="Trạng thái" required>
 							  </div>
 							  <!-- <div class="input-box descrip-box">
 								<span class="details">Miêu tả</span>
@@ -204,9 +223,9 @@
 									</label>
 							  </div>
 							</div>
-							<div id ="saveBtn" class="button">
+							<!-- <div id ="saveBtn" class="button">
 							  <input type="reset" value="Lưu">
-							</div>
+							</div> -->
 						  </form>
 						</div>
 					  </div>
@@ -223,7 +242,6 @@
 	<!-- CONTENT -->
 	
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
-	<script src="../js/admin/Acc_Add_script.js"></script>
-
+	<script src="../js/admin_seller/Acc_Edit_script.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 
 async function searchProduct(req,res){
     const query = req.query.query
-    const condition =  { name: { [Op.like]:'%${query}%'} }
+    const condition =  { name: { [Op.like]:`%${query}%`} }
     const data = await Product.findAll({
       where:condition,
     })
