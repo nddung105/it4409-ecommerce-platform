@@ -107,6 +107,7 @@ document.getElementById("price").value= product.price
 document.getElementById("category").value= product.category
 document.getElementById("brand").value= product.brand
 document.getElementById("descrip").value= product.description
+document.querySelector('.prodImg').src = product.image_link
 var prodname = document.getElementById("name")
 var price = document.getElementById("price")
 var category = document.getElementById("category")
@@ -255,4 +256,21 @@ delBtn.addEventListener('click', () => {
         location.href="./AdminSys_QlySP.html";
       }
     })
+  });
+
+  //upload image
+  window.addEventListener('load', function() {
+    document.querySelector('.uploadImg').addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+            var img = document.querySelector('.prodImg');
+            img.onload = () => {
+                URL.revokeObjectURL(img.src);  // no longer needed, free memory
+            }
+  
+            img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+
+            //Goi api update
+        }
+        console.log("Upload image")
+    });
   });
