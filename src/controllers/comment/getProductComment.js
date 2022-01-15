@@ -14,7 +14,7 @@ async function getProductComment(req,res){
     for(let i = 0; i<data.length; i++){
         rate += data[i].rate
     }
-    res.send({total:data.length,data,rate:rate/data.length})  
+    res.send({total:data.length,data,rate:data.length == 0 ? 0: rate/data.length})  
 }
 
 module.exports = getProductComment;
