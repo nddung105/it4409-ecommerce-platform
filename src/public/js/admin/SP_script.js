@@ -92,6 +92,27 @@ window.addEventListener('resize', (event) =>{
 // 	}
 // })
 
+//find product
+document.querySelector(".form-input button").addEventListener("click", ()=>{
+	var searchval = document.querySelector(".form-input input").value
+	// http://localhost:3000/api/v1/products/search?query=hoang
+	$.ajax({
+		url: "http://localhost:3000/api/v1/products/search?query=" + searchval,
+		type: 'GET',
+		dataType: 'json', // added data type
+		success: function(res) {
+			console.log(res);
+			// alert(res);
+			tableData2 = res
+			state.querySet=tableData2
+			state.page = 1
+			console.log(state.querySet)
+			$('#table-body').empty()
+			buildTable()
+		}
+	});
+})
+
 
 //Pagination
 

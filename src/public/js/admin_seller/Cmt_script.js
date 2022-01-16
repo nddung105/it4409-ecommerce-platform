@@ -92,250 +92,44 @@ window.addEventListener('resize', (event) =>{
 // 	}
 // })
 
+//count visitor
+const countEl = document.getElementById('vistorCount');
+
+updateVisitCount();
+
+function updateVisitCount() {
+	fetch('https://api.countapi.xyz/update/vinhvinh123/aloha/?amount=1')
+	.then(res => res.json())
+	.then(res => {
+		countEl.innerHTML = res.value;
+	})
+}
+
 
 //Pagination
 
-var tableData2 =[
-	{
-		'ma': '1',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '2',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '3',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '4',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '5',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '6',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '9',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '5',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '6',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '9',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '10',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '11',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '12',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '13',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '933',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '543',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '546',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7655',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '845',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '9342',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '554',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '665',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7234',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8545',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '92131',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '554',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '611',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '754',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8123',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '954',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	}
+let tableData2 =[
+
 ]
 
+//http://localhost:3000/api/v1/products?limit=4&offset=0
+$.ajax({
+	url: "http://localhost:3000/api/v1/comments/",
+	type: 'GET',
+	dataType: 'json', // added data type
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		tableData2 = res
+		state.querySet=tableData2.data
+		let cmtCount = tableData2.data.length
+		document.getElementById("cmtCount").innerHTML=cmtCount
+		state.page = 1
+		console.log(state.querySet)
+		$('#table-body').empty()
+		buildTable()
+	}
+});
 
 /*
 1 - Loop Through Array & Access each value
@@ -455,12 +249,12 @@ function buildTable() {
 		console.log(`adding data no ${i}`)
 		var product = myList[i]
 		var row = `<tr>
-				<td>${myList[i].ma}</td>
-				<td>${myList[i].ten}</td>
-				<td>${myList[i].gia}</td>
-				<td>${myList[i].loai}</td>
-				<td>${myList[i].hang}</td>
-				<td><span class="status completed" onclick="openProdDetail(${myList[i].ma})">Xem</span></td>
+				<td>${myList[i].id}</td>
+				<td>${myList[i].product_id}</td>
+				<td>${myList[i].user_id}</td>
+				<td>Is reply</td>
+				<td>Created at</td>
+				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
 				// var detailTd = document.createElement("td")
 				// var detailBtn = document.createElement("span")
@@ -478,119 +272,121 @@ function buildTable() {
 	pageButtons(data.pages)
 }
 
+const Confirm = {
+    open (options) {
+        options = Object.assign({}, {
+            title: '',
+            message: '',
+            okText: 'OK',
+            cancelText: 'Cancel',
+            onok: function () {},
+            oncancel: function () {}
+        }, options);
+        
+        const html = `
+            <div class="confirm">
+                <div class="confirm__window">
+                    <div class="confirm__titlebar">
+                        <span class="confirm__title">${options.title}</span>
+                        <button class="confirm__close">&times;</button>
+                    </div>
+                    <div class="confirm__content">${options.message}</div>
+                    <div class="confirm__buttons">
+                        <button class="confirm__button confirm__button--ok confirm__button--fill">${options.okText}</button>
+                        <button class="confirm__button confirm__button--cancel">${options.cancelText}</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const template = document.createElement('template');
+        template.innerHTML = html;
+
+        // Elements
+        const confirmEl = template.content.querySelector('.confirm');
+        const btnClose = template.content.querySelector('.confirm__close');
+        const btnOk = template.content.querySelector('.confirm__button--ok');
+        const btnCancel = template.content.querySelector('.confirm__button--cancel');
+
+        confirmEl.addEventListener('click', e => {
+            if (e.target === confirmEl) {
+                options.oncancel();
+                this._close(confirmEl);
+            }
+        });
+
+        btnOk.addEventListener('click', () => {
+            options.onok();
+            this._close(confirmEl);
+        });
+
+        [btnCancel, btnClose].forEach(el => {
+            el.addEventListener('click', () => {
+                options.oncancel();
+                this._close(confirmEl);
+            });
+        });
+
+        document.body.appendChild(template.content);
+    },
+
+    _close (confirmEl) {
+        confirmEl.classList.add('confirm--close');
+
+        confirmEl.addEventListener('animationend', () => {
+            document.body.removeChild(confirmEl);
+        });
+    }
+};
+
+// delBtn.addEventListener('click', () => {
+//     Confirm.open({
+//       title: 'Xác nhận xóa sản phẩm',
+//       message: 'Bạn có chắc muốn xóa sản phẩm này chứ?',
+//       onok: () => {
+//         //call api xoa
+//         $.ajax({
+//             url: 'http://localhost:3000/api/v1/products/' + product.id,
+//             type: 'DELETE',
+//             success: function(result) {
+//                 // Do something with the result
+//             }
+//         });
+//         location.href="./AdminSys_QlySP.html";
+//       }
+//     })
+//   });
+
 function openProdDetail(id){
-	localStorage.setItem("product2",JSON.stringify(tableData2.find(x => x.ma == id)))
-	console.log(tableData2.find(x => x.ma == id))
-	location.href="../../../views/admin_seller/AdminSys_QlySP_Edit.html";
+	localStorage.setItem("comment",JSON.stringify(tableData2.data.find(x => x.id == id)))
+	console.log(tableData2.data.find(x => x.id == id))
+	Confirm.open({
+		title: 'Nội dung comment',
+		message: tableData2.data.find(x => x.id == id).content,
+		onok: () => {
+		  //call api xoa
+		//   location.href="./AdminSys_QlySP.html";
+		}
+	  })
+	// location.href="./AdminSys_QlySP_Edit.html";
 	console.log(id);
 }
 
 //sortByPrice
-const priceSortBtn = document.querySelector('#content main .table-data .order table th i') 
-priceSortBtn.addEventListener('click', ()=>{
-	sortedData =[
-		{
-			'ma': '1',
-			'ten': "PS5",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '2',
-			'ten': "PS5",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '3',
-			'ten': "PS5",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '4',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '5',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '6',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '7',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '8',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '9',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '5',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '6',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '7',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '8',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '9',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},]
-	state.querySet=sortedData
-	state.page = 1
-	console.log(state.querySet)
-	$('#table-body').empty()
-	buildTable()
-	console.log("Xoa data")
-})
+// const priceSortBtn = document.querySelector('#content main .table-data .order table th i') 
+// priceSortBtn.addEventListener('click', ()=>{
+// 	sortedData =[
+// 		{
+// 			'ma': '1',
+// 			'ten': "PS5",
+// 			'gia':'	1203 VND',
+// 			'loai': 'Phụ kiện',
+// 			'hang':'Faber Castell'
+// 		},,]
+// 	state.querySet=sortedData
+// 	state.page = 1
+// 	console.log(state.querySet)
+// 	$('#table-body').empty()
+// 	buildTable()
+// 	console.log("Xoa data")
+// })

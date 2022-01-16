@@ -5,7 +5,7 @@ const myChart2 = new Chart(ctx2, {
     data: {
         labels: ['10-20', '20-30', '30-40', '40-50', '50-60', '60-70', '70-80','80-90'],
         datasets: [{
-            label: 'Độ tuổi user',
+            label: 'Giá các sản phẩm',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
