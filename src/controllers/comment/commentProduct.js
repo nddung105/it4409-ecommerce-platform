@@ -12,10 +12,12 @@ async function validateContent(content){
 
 async function commentProduct(req,res){
     const conmmentInfo = {
-        user_id:req.user.id,
+        // user_id:req.user.id,
         product_id: req.body.product_id,
         content: req.body.content,
-        rate: req.body.rate
+        rate: req.body.rate,
+        email: req.body.email,
+        name: req.body.name
     }
     await validateContent(req.body.content)
     await Comment.create(conmmentInfo)

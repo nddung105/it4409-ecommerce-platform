@@ -19,6 +19,26 @@ Comment.init(
     },
     rate:{
       type:DataTypes.INTEGER
+    },
+    createdAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
+      field: 'created_at',
+      allowNull: false
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
+      field: 'updated_at',
+      allowNull: false
+    },
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false,    
+    },
+    name:{
+      type: DataTypes.STRING,
+      allowNull: false,    
     }
 
   },

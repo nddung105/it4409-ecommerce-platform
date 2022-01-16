@@ -38,6 +38,7 @@ async function register(req, res, next) {
         username: user.username,
         name: user.name,
         token: token,
+        role: user.role,
       });
     } catch (e) {
       return res.status(httpStatus.BAD_REQUEST).json({

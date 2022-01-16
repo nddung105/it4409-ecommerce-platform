@@ -92,250 +92,51 @@ window.addEventListener('resize', (event) =>{
 // 	}
 // })
 
+//find product
+document.querySelector(".form-input button").addEventListener("click", ()=>{
+	var searchval = document.querySelector(".form-input input").value
+	console.log("Searching..........")
+	// http://localhost:3000/api/v1/products/search?query=hoang
+	$.ajax({
+		type:"POST",
+		url: "http://localhost:3000/api/v1/products/search?query=" + searchval,
+		success: function (res){
+			console.log(res);
+			// alert(res);
+			tableData2 = res
+			state.querySet=tableData2.data
+			state.page = 1
+			console.log(state.querySet)
+			$('#table-body').empty()
+			buildTable()
+
+		}
+	});
+})
+
 
 //Pagination
 
-var tableData2 =[
-	{
-		'ma': '1',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '2',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '3',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '4',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '5',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '6',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '9',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '5',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '6',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '9',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '10',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '11',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '12',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '13',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '933',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '543',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '546',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7655',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '845',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '9342',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '554',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '665',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '7234',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8545',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '92131',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '554',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '611',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '754',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '8123',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	},
-	{
-		'ma': '954',
-		'ten': "Magic Stick",
-		'gia':'	1203 VND',
-		'loai': 'Phụ kiện',
-		'hang':'Faber Castell'
-	}
+let tableData2 =[
+
 ]
 
+//http://localhost:3000/api/v1/products?limit=4&offset=0
+$.ajax({
+	url: "http://localhost:3000/api/v1/products/",
+	type: 'GET',
+	dataType: 'json', // added data type
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		tableData2 = res
+		state.querySet=tableData2
+		state.page = 1
+		console.log(state.querySet)
+		$('#table-body').empty()
+		buildTable()
+	}
+});
 
 /*
 1 - Loop Through Array & Access each value
@@ -452,15 +253,15 @@ function buildTable() {
 	var myList = data.querySet
 
 	for (var i = 1 in myList) {
-		console.log(`adding data no ${i}`)
+		// console.log(`adding data no ${i}`)
 		var product = myList[i]
 		var row = `<tr>
-				<td>${myList[i].ma}</td>
-				<td>${myList[i].ten}</td>
-				<td>${myList[i].gia}</td>
-				<td>${myList[i].loai}</td>
-				<td>${myList[i].hang}</td>
-				<td><span class="status completed" onclick="openProdDetail(${myList[i].ma})">Xem</span></td>
+				<td>${myList[i].id}</td>
+				<td>${myList[i].name}</td>
+				<td>${myList[i].price}</td>
+				<td>${myList[i].category}</td>
+				<td>${myList[i].brand}</td>
+				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
 				// var detailTd = document.createElement("td")
 				// var detailBtn = document.createElement("span")
@@ -479,8 +280,8 @@ function buildTable() {
 }
 
 function openProdDetail(id){
-	localStorage.setItem("product2",JSON.stringify(tableData2.find(x => x.ma == id)))
-	console.log(tableData2.find(x => x.ma == id))
+	localStorage.setItem("product2",JSON.stringify(tableData2.find(x => x.id == id)))
+	console.log(tableData2.find(x => x.id == id))
 	location.href="./AdminSys_QlySP_Edit.html";
 	console.log(id);
 }
@@ -495,98 +296,7 @@ priceSortBtn.addEventListener('click', ()=>{
 			'gia':'	1203 VND',
 			'loai': 'Phụ kiện',
 			'hang':'Faber Castell'
-		},
-		{
-			'ma': '2',
-			'ten': "PS5",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '3',
-			'ten': "PS5",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '4',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '5',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '6',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '7',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '8',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '9',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '5',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '6',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '7',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '8',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},
-		{
-			'ma': '9',
-			'ten': "Magic Stick",
-			'gia':'	1203 VND',
-			'loai': 'Phụ kiện',
-			'hang':'Faber Castell'
-		},]
+		},,]
 	state.querySet=sortedData
 	state.page = 1
 	console.log(state.querySet)

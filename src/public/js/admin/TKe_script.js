@@ -90,4 +90,60 @@ window.addEventListener('resize', (event) =>{
 // 	} else {
 // 		document.body.classList.remove('dark');
 // 	}
+
+
+
+
 // })
+
+//http://localhost:3000/api/v1/order/sales_by_month
+//fix
+$.ajax({
+	url: "http://localhost:3000/api/v1/order/sales_by_month",
+	type: 'GET',
+	dataType: 'json', // added data type
+	headers: {
+		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjEwLCJuYW1lIjoiVEsgQURNSU4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDIzMDUwMjN9.yJJFnXULEOoq96uZeRcVnkluU6zyQvmNZE6H8xGhMoc'
+	},
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		// document.getElementById("numUser").innerHTML = res.data.length
+		var doanhThu = res.data
+		var totalDoanhthu = 0  
+	
+		for (var key in doanhThu) {
+			console.log(doanhThu[key]["total_money"])
+			totalDoanhthu += doanhThu[key]["total_money"]
+		}
+		document.getElementById("doanhThu").innerHTML=totalDoanhthu
+	}
+});
+
+
+$.ajax({
+	url: "http://localhost:3000/api/v1/users/show_all_customer",
+	type: 'GET',
+	dataType: 'json', // added data type
+	headers: {
+		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbGUiLCJpZCI6bnVsbCwibmFtZSI6IlRLIFNBTEUiLCJyb2xlIjoic2FsZSIsImlhdCI6MTY0MjMwMjM0OX0.5R6-asHF7ylnZWvNb8dLdIq2228h9XEAxBVU3NFO6mA'
+	},
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		document.getElementById("numUser").innerHTML = res.data.length
+	}
+});
+
+
+const countEl = document.getElementById('vistorCount');
+
+updateVisitCount();
+
+function updateVisitCount() {
+	fetch('https://api.countapi.xyz/update/vinhvinh123/aloha/?amount=1')
+	.then(res => res.json())
+	.then(res => {
+		countEl.innerHTML = res.value;
+	})
+}

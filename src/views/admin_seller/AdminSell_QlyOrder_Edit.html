@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../css/admin/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<title>Admin</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">Tên web</span>
+		</a>
+		<ul class="side-menu top">
+			<!-- <li>
+				<a href="AdminSys_TKe.html">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Thống kê</span>
+				</a>
+			</li> -->
+			<li>
+				<a href="/admin_seller">
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Quản lý bình luận</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="AdminSell_QlyOrder.html">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Quản lý hóa đơn</span>
+				</a>
+			</li>
+			<!-- <li>
+				<a href="#">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Message</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Team</span>
+				</a>
+			</li> -->
+		</ul>
+		<ul class="side-menu">
+			<!-- <li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li> -->
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Đăng xuất</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<!-- <a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+			<!-- <a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a> -->
+			<!-- <a href="#" class="profile">
+				<img src="img/people.png">
+			</a> -->
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Quản lý hóa đơn</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a class ="active" href="AdminSell_QlyOrder.html">Quản lý hóa đơn</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a href="#">Chi tiết hóa đơn</a>
+						</li>
+					</ul>
+				</div>
+				<!-- <a href="#" class="btn-delete">
+					<i class='bx bxs-message-square-x'></i>
+					<span id="deleteBtn" class="text">Xóa tài khoản</span>
+				</a> -->
+			</div>
+
+			<!-- <ul class="box-info">
+				<li>
+					<i class='bx bx-face' ></i>
+					<span class="text">
+						<h3>1020</h3>
+						<p>Người dùng</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3>2834</h3>
+						<p>Lượt truy cập</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>$2543</h3>
+						<p>Doanh thu</p>
+					</span>
+				</li>
+			</ul> -->
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Chi tiết hóa đơn</h3>
+						<!-- <form action="#">
+							<div class="form-input">
+								<input type="search" placeholder="Tìm kiếm...">
+								<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+							</div>
+						</form> -->
+						<!-- <i class='bx bx-search' ></i> -->
+						<!-- <i class='bx bx-filter' ></i> -->
+					</div>
+					<div class="container">
+						<div id="bigTitle" class="title"></div>
+						<div class="content">
+						  <form action="#">
+							<!-- <div class ="spanOfImg">
+								<img class="prodImg" src="#">
+								<i class='bx bx-edit-alt'></i>
+							</div> -->
+							<div class="user-details">
+							  <div class="input-box">
+								<span class="details">Mã hóa đơn</span>
+								<input id ="orID" type="text" placeholder="Mã hóa đơn" required>
+							  </div>
+							  <div class="input-box">
+								<span  class="details">Mã người dùng</span>
+								<input id ="userID" type="text" placeholder="Mã người dùng" required>
+							  </div>
+							  <div class="input-box">
+								<span  class="details">Mã sản phẩm</span>
+								<!-- <input id ="productID" type="text" placeholder="Mã sản phẩm" required> -->
+								<ul id = "productList">
+									
+								</ul>
+							  </div>
+							  <div class="input-box">
+								<span  class="details">Thành tiền</span>
+								<!-- <input id ="quantity" type="text" placeholder="Số lượng" required> -->
+								<ul id ="quantityList">
+									
+								</ul>
+							  </div>
+							  <div class="input-box">
+								<span  class="total">Tổng tiền</span>
+								<input id ="totalMoney" type="text" placeholder="Tổng tiền" required>
+							  </div>
+							  <div class="input-box">
+								<span  class="details">Tên đầy đủ</span>
+								<input id="fullName" type="text" placeholder="Tên đầy đủ" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Địa chỉ</span>
+								<input id="address" type="text" placeholder="Địa chỉ" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Số điện thoại</span>
+								<input id="phoneNum" type="text" placeholder="Số điện thoại" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Trạng thái</span>
+								<input id="status" type="text" placeholder="Trạng thái" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Ghi chú</span>
+								<input id="note" type="text" placeholder="Trạng thái" required>
+							  </div>
+							  <!-- <div class="input-box descrip-box">
+								<span class="details">Miêu tả</span>
+								<textarea id="descrip" name="Text1" rows="5"></textarea>
+
+							  </div> -->
+							  <!-- <div class="input-box">
+								<span class="details">Confirm Password</span>
+								<input type="text" placeholder="Confirm your password" required>
+							  </div> -->
+							</div>
+							<div class="gender-details">
+							  <!-- <input type="radio" name="gender" id="dot-1">
+							  <input type="radio" name="gender" id="dot-2">
+							  <input type="radio" name="gender" id="dot-3"> -->
+							  <!-- <span class="gender-title">Thông tin khác</span> -->
+							  <div class="category">
+								
+								<label for="dot-3">
+									<!-- <span class="dot three"></span> -->
+									<span class="gender">Ngày tạo: </span>
+									<span id="createDate" class="gender">20/10/1999</span>
+									</label>
+							  </div>
+							</div>
+							<!-- <div id ="saveBtn" class="button">
+							  <input type="reset" value="Lưu">
+							</div> -->
+						  </form>
+						</div>
+					  </div>
+				</div>
+				
+				
+			</div>
+
+			
+			
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+	<script src="../js/admin_seller/Oder_Edit_script.js"></script>
+</body>
+</html>

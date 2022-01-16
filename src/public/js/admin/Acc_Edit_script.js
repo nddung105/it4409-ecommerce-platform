@@ -103,10 +103,11 @@ document.querySelector("#bigTitle").innerHTML = account.name
 // document.getElementById("brand").placeholder= product.hang
 
 document.getElementById("name").value= account.name
-document.getElementById("email").value= account.email
+document.getElementById("username").value= account.username
 document.getElementById("role").value= account.role
-document.getElementById("pass").value= account.password
-document.getElementById("createDate").innerHTML= account.created_at
+// document.getElementById("pass").value= account.password
+document.getElementById("createDate").innerHTML= account.createdAt
+document.getElementById("phoneNum").value= account.phonenumber
 // var prodname = document.getElementById("name")
 // var price = document.getElementById("price")
 // var category = document.getElementById("category")
@@ -122,17 +123,40 @@ saveBtn = document.getElementById("saveBtn")
 saveBtn.addEventListener('click', () =>{
 	//call api
 	//not change
-	// if(prodname.value === product.ten &&
-	// 	price.value === product.gia &&
-	// 	category.value === product.loai &&
-	// 	brand.value === product.hang &&
-	// 	descrip.value === ""
-	// 	){
-	// 		//do nothing
-	// 	}
-	// else{
-	// 	//call api to update
-	// }
+	if(false)
+		{
+			//do nothing
+		}
+	else{
+		// //call api to update
+        // //call api to update
+        // var values = {
+        //     "username": document.getElementById("username").value,
+        //     "name": document.getElementById("name").value,
+        //     "role": document.getElementById("role").value,
+        //     "phonenumber": document.getElementById("phoneNum").value,
+        //     "avatar": null,
+        // }
+
+        
+
+        // values = JSON.stringify(values);
+        // console.log(values)
+
+        // $.ajax({
+        //     url: 'http://localhost:3000/api/v1/users/edit' + product.id,
+        //     type: 'post',
+        //     data: values,
+        //     dataType: 'json',
+        //     contentType:'application/json',
+        //     headers: {
+        //         'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5kZHVuZzEyMyIsImlkIjoxMywibmFtZSI6Ik5ndXllbiBEaW5oIER1bmciLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE2NDIzMDQ1NDJ9.mcRG8i5xGvia68AnysUfaJ3Ha3vcpFIc-LT6iL5UnTU'
+        //     },
+        //     success: function(data) {
+        //     //   alert('Load was performed.');
+        //     }
+        //   });
+	}
 	location.href="./AdminSys_QlyAcc.html",true;
 	console.log("back")
 })
