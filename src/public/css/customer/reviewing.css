@@ -4,7 +4,7 @@
     box-sizing: border-box; 
     padding: 12px;
     width: 100%;
-    height: 150px;
+    height: 100px;
 }
 .review-form{
     display: flex;
@@ -38,10 +38,39 @@
     cursor: pointer;
     float: left;
     font-size: 16px;
+    width: 200px;
+    margin-top: 20px;
 }
 #star-vote span{
     cursor: pointer;
 }
 .fa-star{
     color: rgb(253, 216, 54);
+}
+
+.label-item {
+    font-weight: bold;
+    padding: 10px;
+}
+input[type="text"]{
+    width: 100%;
+    border: 1px solid #c2c2c2;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    padding: 5px;
+    width: 100%;
+    height: 50px;
+}
+
+@media (max-width: 1200px) {
+    .review-inner{
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+@media (max-width: 800px) {
+    .review-inner{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
 }

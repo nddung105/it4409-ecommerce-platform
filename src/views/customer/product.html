@@ -14,6 +14,8 @@
   <!--  -->
   <link rel="stylesheet" type="text/css" href="../css/customer/user.css">
   <link rel="stylesheet" type="text/css" href="../css/customer/product.css">
+  <link rel="stylesheet" type="text/css" href="../css/customer/index.css">
+  
 </head>
 
 <body class="overlay-scrollbar">
@@ -34,8 +36,8 @@
         <li class="navbar-item">
           <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
         </li>
-        <li class="navbar-item">
-          <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
+        <li class="navbar-item" id="products-cates">
+          <a href="#" class="navbar-item-link" title="Sản phẩm" >Sản phẩm</a>
         </li>
         <li class="navbar-item">
           <a href="#" class="navbar-item-link" title="Liên hệ">Liên hệ</a>
@@ -118,6 +120,20 @@
         </li>
       </ul>
     </div>
+    <!--Menu cac loai san pham-->
+    <div class="product-cate-link" id="product-cate-link">
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Dell</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">HP</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Razer</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Lenovo</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Asus</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Acer</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Microsoft</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Apple</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">MSI</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">LG</a>
+    </div>
+
   </header>
   <!-- <div class="loading-wrapper">
     <img src="../assets/customer/loading5.gif">
@@ -139,19 +155,60 @@
       <p class="cat-title">Danh mục sản phẩm</p>
       <ul class="sidebar-menu">
         <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
+          <a href="#" class="sidebar-link" id="allproduct">
           <!-- <a href="#" class="sidebar-link active-link"> -->
-            <span>Danh mục 1</span>
+            <span>Tất cả sản phẩm</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <span>Danh mục 2</span>
+          <a href="#" class="sidebar-link" id="dell">
+          <!-- <a href="#" class="sidebar-link active-link"> -->
+            <span>Dell</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <span>Danh mục 3</span>
+          <a href="#" class="sidebar-link" id="hp">
+            <span>HP</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="razer">
+            <span>Razer</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="lenovo">
+            <span>Lenovo</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="asus">
+            <span>Asus</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="acer">
+            <span>Acer</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="microsoft">
+            <span>Microsoft</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="microsoft">
+            <span>Apple</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="msi">
+            <span>MSI</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link" id="lg">
+            <span>LG</span>
           </a>
         </li>
       </ul>
@@ -159,8 +216,8 @@
 
     <div class="content">
       <h2 id="page-title">Sản phẩm</h2>
-      <div class="flex">
-        <div class="flex-item product-item">
+      <div class="flex" id="products-flex">
+        <!-- <div class="flex-item product-item">
           <img src="../assets/customer/product1.jpg">          
           <p class="product-name"><span>Dell 7480 abadbjkd adjweoidh aaaaaaaaaaaaaaaaaaaaaaaaa</span></p>
           <span class="product-price-after">12.000.000 đ</span>
@@ -213,7 +270,7 @@
             <i class="fas fa-cart-plus"></i>
           </div>
         </div>
-        
+         -->
       </div>
     </div>
   </main>
@@ -280,6 +337,132 @@
   <script src="../js/customer/index.js"></script>
   <script src="../js/customer/scrollToTop.js"></script>
   <script src="../js/customer/product.js"></script>
+
+  <script>
+    // Instantiate an new XHR Object
+    const xhr = new XMLHttpRequest();
+
+    // Open an obejct (GET/POST, PATH,
+    // ASYN-TRUE/FALSE)
+    xhr.open("GET", "http://localhost:3000/api/v1/products?limit=16&offset=0", true);
+
+    // When response is ready
+    xhr.onload = function () {
+        if (this.status === 200) {
+          console.log("got it")
+          // Changing string data into JSON Object
+          obj = JSON.parse(this.responseText);
+          console.log(obj)
+          console.log(obj[0])
+          console.log(obj[0].brand);
+          console.log(obj.length);
+          // Getting the products dive element
+          let products = document.getElementById("products-flex");
+          str = "";
+          for (var i = 0; i<obj.length; i++ ){
+            str += 
+            `
+              <div class="flex-item product-item" data-link="http://localhost:3000/products/${obj[i].id}">
+                <img src="${obj[i].image_link}">
+                <p class="product-name"><span>${obj[i].name}</span></p>
+                <span class="product-price">${obj[i].price} đ</span>
+                <div class="add-cart-btn">
+                  <i class="fas fa-cart-plus"></i>
+                </div>
+              </div>
+            `; 
+                        
+          }
+          products.innerHTML = str;   
+        //  <div class="flex-item product-item" data-link="product-detail.html">
+        //   <img src="../assets/customer/product3.jpg">
+        //   <p class="product-name"><span>Laptop Asus VivoBook S15 S533EA-BQ018T (Core i5-1135G7/ 8GB DDR4 3200MHz/ 512GB M.2 NVMe PCIe 3.0/ 15.6 FHD/ Win10) - Hàng Chính Hãng</span></p>
+        //   <span class="product-price">15.000.000 đ</span>
+        //   <div class="add-cart-btn">
+        //     <i class="fas fa-cart-plus"></i>
+        //   </div>
+        // </div>
+          function clickProduct(event) {
+              console.log(event.target)
+              var link = event.target.getAttribute("data-link");
+              window.open(link);
+            
+          }
+
+          var elements = document.getElementsByClassName("product-item");
+          console.log(elements)
+          for(var i = 0; i < elements.length; ++i) {
+            elements[i].addEventListener('click', (event) => {
+              clickProduct(event);
+            })
+          }
+
+
+        }
+        
+        else {
+            console.log("File not found");
+        }
+    }
+    xhr.send();
+
+    // Click vào side bar link
+    var allproduct = document.getElementById("allproduct");
+    allproduct.style.color = "#2196f3"
+    var sidebarlinks = document.getElementsByClassName("sidebar-link");
+    Array.from(sidebarlinks).forEach(function(sidebarlink) {
+      sidebarlink.addEventListener('click',() =>{
+        for (var i = 0; i < sidebarlinks.length; i++) {
+          sidebarlinks[i].style.color = "black"
+        }
+        sidebarlink.style.color = "#2196f3"
+        let id = sidebarlink.id
+        console.log(id)
+        // Instantiate an new XHR Object
+        const brand = new XMLHttpRequest();
+
+        // Open an obejct (GET/POST, PATH,
+        // ASYN-TRUE/FALSE)
+        brand.open("GET", "http://localhost:3000/api/v1/products?brand="+id+"&limit=16&offset=0", true);
+
+        // When response is ready
+        brand.onload = function () {
+            if (this.status === 200) {
+              console.log("got it")
+              // Changing string data into JSON Object
+              obj = JSON.parse(this.responseText);
+              console.log(obj)
+              console.log(obj[0])
+              console.log(obj[0].brand);
+              console.log(obj.length);
+              // Getting the products dive element
+              let products = document.getElementById("products-flex");
+              str = "";
+              for (var i = 0; i<obj.length; i++ ){
+                str += 
+                `
+                  <div class="flex-item product-item" data-link="localhost:3000">
+                    <img src="${obj[i].image_link}">
+                    <p class="product-name"><span>${obj[i].name}</span></p>
+                    <span class="product-price">${obj[i].price} đ</span>
+                    <div class="add-cart-btn">
+                      <i class="fas fa-cart-plus"></i>
+                    </div>
+                  </div>
+                `; 
+                            
+              }
+              products.innerHTML = str;   
+            }
+            else {
+                console.log("File not found");
+            }
+        }
+        brand.send();
+
+      });
+    });
+</script>
 </body>
 
 </html>

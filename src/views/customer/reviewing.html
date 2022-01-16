@@ -124,13 +124,17 @@
         <p>Đang tải trang, bạn chờ một chút nhé ^^</p>
         <img src="../assets/customer/loading4-crop.gif" class="loading-gif">
       </div>
+
+      <div class="msg" id="msg">
+        <span>Bình luận của bạn chứa những từ ngữ không hợp lệ!!!</span>
+      </div>
       <div class="review-inner">
         <div class="review-head">
-          <h1>Dell Latitude 7480</h1>
+          <h1 id="productname">Dell Latitude 7480</h1>
           <h2>Đánh giá sản phẩm</h2>
         </div>
         <div class="review-form">
-          <form action="">
+
             <div class="star-rating">
               <div class="reviewStars">
                 <span data-rating="1"><i class="far fa-star"></i></span>
@@ -141,13 +145,18 @@
               </div>
             </div>
             
-            <label for="review-content">Đánh giá của bạn</label>
+            <label for="review-content" class="label-item">Đánh giá của bạn</label>
             <br>
             <textarea name="review-content" id="review-content" placeholder="Hãy cho chúng tôi biết đánh giá của bạn về sản phẩm"></textarea>
-            <input type="submit" value="Gửi đánh giá" id="submit-review">
-            <!--<a href="" class="btn-vote" id="btn-review">Gửi đánh giá</a>-->
             
-          </form>
+            <label for="name" class="label-item">Tên</label>
+            <input type="text" name="name" id="name">
+
+            <label for="email" class="label-item">Email</label>
+            <input type="text" name="email" id="email">
+            <!--<a href="" class="btn-vote" id="btn-review">Gửi đánh giá</a>-->
+            <button id="submit-review">Gửi đánh giá</button>
+          
         </div>
 
       </div>
@@ -217,6 +226,79 @@
     <script src="../js/customer/scrollToTop.js"></script>
     <script src="../js/customer/product.js"></script>
     <script src="../js/customer/reviewing.js"></script>
+
+    <script>
+      let id = location.pathname.split('/').slice(-1);
+      id = parseInt(id)
+      console.log(typeof(id))
+      
+      let rate = document.getElementsByClassName("fas fa-star").length;
+      console.log(rate)
+      // Instantiate an new XHR Object
+      document.getElementById("submit-review").addEventListener('click', () =>{
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const reviewcontent = document.getElementById("review-content").value;
+        console.log(name, email, reviewcontent)
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/api/v1/comments");
+
+          xhr.setRequestHeader("Accept", "application/json");
+          xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+          let data = JSON.stringify({
+            product_id:id,
+            rate:rate,
+            name:name,
+            email:email,
+            content: reviewcontent
+          });
+          // data = {
+          //     "product_id":2,
+          //     "content":"ha ha",
+          //     "rate":5,
+          //     "email":"hoangnsv@gmail.com",
+          //     "name":"viethoang"
+          // }
+          const msg = document.getElementById('msg');
+          xhr.onload=function(){
+            console.log(xhr.response)
+            if(this.status == 400){              
+              msg.style.display = "block";
+              timeout = setTimeout(hidefunction, 2000)
+              function hidefunction(){
+               msg.style.display = "none";
+              }
+            }
+          }
+
+          console.log(typeof(data));
+          xhr.send(data);
+
+          
+      })
+
+      // Get product name
+        const product = new XMLHttpRequest();
+        product.open("GET", "http://localhost:3000/api/v1/products/" + id, true);
+
+        // When response is ready
+        product.onload = function () {
+            if (this.status === 200) {
+              console.log("got it")
+              // Changing string data into JSON Object
+              obj = JSON.parse(this.responseText);
+              console.log(obj)
+              const productname = document.getElementById('productname');
+              productname.innerHTML = obj.name
+            }
+            else {
+                console.log("File not found");
+            }
+        }
+        product.send();
+      
+    </script>
   </body>
   
 </html>

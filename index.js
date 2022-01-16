@@ -21,7 +21,13 @@ app.use('/', apiRouter)
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/src/views/index.html');
   });
-  
+
+app.get('/products/:id', function (req, res) {
+    res.sendFile(__dirname + '/src/views/customer/product-detail.html');
+});
+app.get('/comment/:id', function (req, res) {
+    res.sendFile(__dirname + '/src/views/customer/reviewing.html');
+}); 
 app.use(express.static(path.join(__dirname, '/src/public')));
 
 app.listen(PORT, () => {

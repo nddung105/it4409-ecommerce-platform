@@ -149,11 +149,11 @@ saveBtn.addEventListener('click', () =>{
                 "password": document.getElementById("pass").value,
                 "name": document.getElementById("name").value
             }
-            // values = JSON.stringify(values);
-            var formData = new FormData()
-            formData.append("username", document.getElementById("username").value)
-            formData.append("password", document.getElementById("pass").value)
-            formData.append("name", document.getElementById("name").value)
+            values = JSON.stringify(values);
+            // var formData = new FormData()
+            // formData.append("username", document.getElementById("username").value)
+            // formData.append("password", document.getElementById("pass").value)
+            // formData.append("name", document.getElementById("name").value)
             // formData.append("brand",document.getElementById("brand").value)
             // formData.append("description",document.getElementById("descrip").value)
             // formData.append("myfile",inputElement.files[0])
@@ -161,15 +161,16 @@ saveBtn.addEventListener('click', () =>{
             $.ajax({
                 type: 'POST',
                 url: "http://localhost:3000/api/v1/users/register_sale",
-                data: formData,
+                data: values,
+                dataType: 'json',
                 headers: {
                     'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjEwLCJuYW1lIjoiVEsgQURNSU4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDIzMDUwMjN9.yJJFnXULEOoq96uZeRcVnkluU6zyQvmNZE6H8xGhMoc'
                 },
                 error: function(e) {
+                  console.log(values);
                   console.log(e);
                 },
-                processData: false,
-                contentType: false,
+                contentType: 'application/json',
               });
           //call api post
         //fix xong thi uncomment dong duoi

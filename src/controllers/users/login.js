@@ -41,6 +41,7 @@ async function login(req, res, next) {
       username: username,
       name: user.name,
       token: token,
+      role: user.role
     });
   } catch (e) {
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({

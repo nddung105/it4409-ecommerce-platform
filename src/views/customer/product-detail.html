@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Dell Latitude 7480 | eShop</title>
+  <title id="title">Dell Latitude 7480 | eShop</title>
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -14,6 +14,9 @@
 
   <!--  -->
   <link rel="stylesheet" type="text/css" href="../css/customer/product-detail.css">
+  <link rel="stylesheet" type="text/css" href="../css/customer/index.css">
+
+  
 </head>
 
 <body class="overlay-scrollbar">
@@ -34,8 +37,8 @@
         <li class="navbar-item">
           <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
         </li>
-        <li class="navbar-item">
-          <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
+        <li class="navbar-item" id="products-cates">
+          <a href="#" class="navbar-item-link" title="Sản phẩm" >Sản phẩm</a>
         </li>
         <li class="navbar-item">
           <a href="#" class="navbar-item-link" title="Liên hệ">Liên hệ</a>
@@ -89,7 +92,7 @@
 
         </li>
         <li class="navbar-item">
-          <div class="login-button">
+          <div class="login-button" id="login-button">
             <a href=""><span>Đăng nhập/</span>
               <span>Đăng ký</span>
             </a>              
@@ -99,7 +102,7 @@
         <li class="navbar-item">
           <div class="cart-wrapper">
             <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng"></i>
-            <span class="cart-number-product">100</span>
+            <span class="cart-number-product" id="numberofproducts">0</span>
           </div>
         </li>
       </ul> 
@@ -118,11 +121,27 @@
         </li>
       </ul>
     </div>
+    <!--Menu cac loai san pham-->
+    <div class="product-cate-link" id="product-cate-link">
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Dell</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">HP</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Razer</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Lenovo</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Asus</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Acer</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Microsoft</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">Apple</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">MSI</a>
+      <a href="index.html" class="navbar-item-link" title="Trang chủ">LG</a>
+    </div>
+
   </header>
   <!-- <div class="loading-wrapper">
     <img src="../assets/customer/loading5.gif">
   </div> -->
-
+  <div class="add-product-success" id="add-product-success" >
+    <span>Đã thêm sản phẩm vào giỏ hàng</span>
+  </div>
   <main class="main-content">
     <div class="loading-wrapper">
       <img src="../assets/customer/logo-side180_60px.png" class="loading-logo logo">
@@ -131,14 +150,14 @@
     </div> 
 
     <div class="info-container">
-      <div class="img-product-container">
-        <h2 class="product-name">Dell Latitude 7480 core i5-6300U, RAM 16GB DDR4, SSD 256GB</h2>
-        <img src="../assets/customer/product1.jpg" alt="product">
+      <div class="img-product-container" id="img-product-container">
+        <h2 class="product-name" id="product-name-responsive"></h2>
+        <img src="../assets/customer/product1.jpg" alt="product" id="product-image">
       </div>
       <div class="detail-container">
-        <h2 class="product-name">Dell Latitude 7480 core i5-6300U, RAM 16GB DDR4, SSD 256GB</h2>
-        <div class="product-price">
-          <p class="price-end">12.000.000 đ</p>
+        <h2 class="product-name" id="product-name"></h2>
+        <div class="product-price" >
+          <p class="price-end" id="product-price"></p>
         <!-- <p class="price-discount">
             <span>15.000.000 đ</span> | <span>-20%</span>
           </p>-->
@@ -153,53 +172,34 @@
           <span class="increase-qty value-button" onclick="increaseValue(this)">+</span>
         </div>
 
-        <a href="#" class="buy-btn">Chọn Mua</a>
+        <a href="#" class="buy-btn" id="buy-btn">Chọn Mua</a>
       </div>
     </div>
 
     <div class="description-container">
       <h3 class="description-title">Mô tả sản phẩm</h3>
-      <p class="description-p">Laptop Dell Latitude E7280 Core i5 7300U/ Ram 8Gb/ SSD 256Gb/ Màn 12.5 inch HD
-        Thiết kế
-        
-        Dell Latitude 7280 có vỏ máy được làm bằng hợp kim nhôm cao cấp và được sơn đen nhám nên cho cảm giác cầm nắm cực tốt, tăng sự chắc chắn và bền bỉ cho chiếc laptop này mà vẫn giữ được vẻ thanh lịch vốn có. Phần khung máy cũng được làm bằng hợp kim cao cấp khiến nó thậm chí vượt qua được cả bài test tiêu chuẩn MIL-STD 810G của quân đội Mỹ.
-        
-        Kích thước của E7280 là 304.8 x 208 x 17.05 mm và nặng khoảng 1.18Kg - mỏng hơn so với các sản phẩm cùng dòng Latitude đi trước của Dell, thậm chí là so cả với dòng Dell XPS 13. Nhưng Dell Latitude 7280 sẽ có thiết kế tối giản vì là dòng sản phẩm mà Dell nhắm đến các đối tượng là doanh nhân cần sự bền bỉ, gọn nhẹ, và có độ bảo mật cao.
-        
-        Bàn phím và Touchpad
-        
-        Bàn phím trên Dell Latitude 7280 rất tốt, cho cảm giác gõ tốt và độ đàn hồi sâu - hành trình lên đến 1,7mm và lực là 60 gram. Khung máy chắc chắn bởi hợp kim vì vậy bàn phím sẽ không bị flex gây khó chịu như nhiều mẫu laptop rẻ tiền.
-        
-        Touchpad trên Dell Latitude 7280 hỗ trợ đa điểm của Windows 10 và có kích thước khá rộng rãi 9,65cm x 5,5cm. Đủ cho nhu cầu sử dụng cá nhân. Cảm giác di chuyển tay trên Touchpad tốt, phản hồi tức thì do đây là mẫu laptop cao cấp hàng đầu. Các nút bấm tích hợp cũng cho một cảm giác cao cấp khi có sự chắc chắn và êm cần thiết.
-        
-        Cổng kết nối
-        
-        Với yêu cầu là một mẫu laptop dành cho doanh nhân phục vụ nhu cầu công việc thì Dell E7280 được trang bị rất đầy đủ các cổng kết nối. Bao gồm: DC-in, DisplayPort, USB Type C Thunderbolt Options, HDMI, 2 x USB (3.0), RJ45, Audio, Optional WiGig Dock.
-        
-        Âm thanh
-        
-        Chất lượng âm thanh trên chiếc laptop doanh nhân thế này thường ở mức trung bình. Và Dell Latitude 7280 không phải ngoại lệ. Nó sẽ không được tốt như những chiếc laptop thiên về khả năng giải trí.</p>
+      <p class="description-p" id="description-p"></p>
     </div>
 
     <div class="box-vote">            
       <h3 class="description-title">Đánh giá của khách hàng</h3>
       <div class="star-vote-container">
         <div class="star-votes">
-          <div class="star-vote">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+          <div class="star-vote" id="star-vote">
+            <span class="fa fa-star " id="1"></span>
+            <span class="fa fa-star " id="2"></span>
+            <span class="fa fa-star " id="3"></span>
+            <span class="fa fa-star " id="4"></span>
+            <span class="fa fa-star" id="5"></span>
           </div>        
-          <span>15 đánh giá</span>
+          <span id="numberofcomments"></span>
         </div>
-        <a href="" class="btn-vote">Viết đánh giá</a>
+        <a href="" class="btn-vote" id="btn-vote">Viết đánh giá</a>
 
       </div>
 
-      <div class="reviews">
-        <div class="review">
+      <div class="reviews" id="reviews">
+        <!-- <div class="review">
           <div class="star-votes">
             <span class="user-name">Nguyen Kim Tung</span>
             <div class="star-vote">
@@ -212,34 +212,41 @@
             
           </div>
           <p class="review-content">San pham that tuyet voi!!!</p>
-      </div>
-      <div class="review">
-        <div class="star-votes">
-          <span class="user-name">Nguyen Kim Tung</span>
-          <div class="star-vote">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-          </div>   
-          
+          <div class="reply">
+            <i class="fas fa-reply"></i>
+            <div class="reply-content">
+              <span class="admin-name">Admin</span>
+              <span class="admin-reply">Cam on ban!</span>
+            </div>
+          </div>
         </div>
-        <p class="review-content">San pham that tuyet voi!!!</p>
-    </div>
+        <div class="review">
+          <div class="star-votes">
+            <span class="user-name">Nguyen Kim Tung</span>
+            <div class="star-vote" >
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>   
+            
+          </div>
+          <p class="review-content">San pham that tuyet voi!!!</p>
+          <div class="reply">
+            <i class="fas fa-reply"></i>
+            <div class="reply-content">
+              <span class="admin-name">Admin</span>
+              <span class="admin-reply">Cam on ban!</span>
+            </div>
+          </div>
+          
+        </div> -->
     </div>
 
-    
-    <div class="comment-box">
+    <!--
+          <div class="comment-box">
       <h3 class="description-title">Bình luận</h3>
-      <!--
-        <div class="your-cmt">
-        <span>Bình luận của bạn</span>
-        <form action="" class="comment">
-          <input type="text" name="" id="">
-        </form>
-      </div>
-      -->
       
       <a href="" class="btn-vote" id="btn-cmt">Viết bình luận</a>
       <div class="reviews">
@@ -268,6 +275,9 @@
     </div>
     </div>
     </div>
+
+    -->
+
   </main>
 
   <footer class="footer">
@@ -332,6 +342,164 @@
   <script src="../js/customer/index.js"></script>
   <script src="../js/customer/scrollToTop.js"></script>
   <script src="../js/customer/product.js"></script>
+
+  <script>
+    //PRODUCT
+    const xhr = new XMLHttpRequest();
+    let id = location.pathname.split('/').slice(-1);
+    console.log(id)
+    xhr.open("GET", "http://localhost:3000/api/v1/products/" + id, true);
+
+    const title = document.getElementById('title');
+    // When response is ready
+    xhr.onload = function () {
+        if (this.status === 200) {
+          console.log("got it")
+          // Changing string data into JSON Object
+          obj = JSON.parse(this.responseText);
+          console.log(obj)
+          title.innerHTML = obj.name
+          const productname = document.getElementById('product-name');
+          productname.innerHTML = obj.name
+
+          const productimage = document.getElementById("product-image");
+          productimage.src = obj.image_link;
+          console.log(obj.image_link)
+
+          const productnameresponsive = document.getElementById('product-name-responsive');
+          productnameresponsive.innerHTML = obj.name
+          const productprice = document.getElementById('product-price')
+          productprice.innerHTML = obj.price + ' đ'
+          const des = document.getElementById('description-p')
+          des.innerHTML = obj.description
+
+          // comment button
+          const btnvote = document.getElementById('btn-vote')
+          btnvote.href = "http://localhost:3000/comment/" + id
+        }
+        else {
+            console.log("File not found");
+        }
+    }
+    xhr.send();
+
+
+    //COMMENTS
+    const cmt = new XMLHttpRequest();
+    // let id = location.pathname.split('/').slice(-1);
+    // console.log(id)
+    cmt.open("GET", "http://localhost:3000/api/v1/comments?product_id="+id, true);
+    
+    // When response is ready
+    cmt.onload = function () {
+        if (this.status === 200) {
+          console.log("got it")
+          // Changing string data into JSON Object
+          obj = JSON.parse(this.responseText);
+          console.log(obj)
+          // So luong danh gia
+          const numberOfComments = document.getElementById('numberofcomments');
+          numberOfComments.innerHTML = obj.total + " đánh giá";
+          // Danh gia trung binh
+          const rate = obj.rate;
+          const starvote = document.getElementById(rate.toString());
+          for(var i = 1; i<=rate; i++){
+            var star = document.getElementById(i.toString());
+            star.classList.add("checked")
+          }
+          //Binh luan
+          const comments = obj.data;
+          const reviews = document.getElementById("reviews");
+          
+          str = "";
+          for(var i = 0; i<comments.length; i++){
+            console.log(comments[i].rate)
+            stars = "";
+            stringID = comments[i].id.toString();
+            stars += `<div class="review" id=${stringID}>
+                        <div class="star-votes">
+                            <span class="user-name">${comments[i].name}</span>
+                            <div class="star-vote">
+              `;
+            for(var j=1; j<=comments[i].rate; j++){
+              stars += `<span class="fa fa-star checked"></span>`;
+              //console.log(stars);
+            }
+
+            stars += `
+                  </div>  
+                </div>`
+            //console.log(stars)
+            stars +=` <p class="review-content">${comments[i].content}</p>`
+            stars+=`
+              </div>
+            `
+            //console.log(stars)
+            //CONTENT
+            
+            str+= stars
+          }
+          reviews.innerHTML= str;
+        }
+        else {
+            console.log("File not found");
+        }
+    }
+    cmt.send();
+  </script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script>
+    const loginbutton = document.getElementById('login-button')
+    console.log(localStorage.getItem('name'))
+    if (localStorage.getItem('token'))
+    {
+      console.log(1)
+      loginbutton.innerHTML = `<span>${localStorage.getItem('name')}</span>`
+    }
+    const cart = document.getElementById("buy-btn");
+    const numberofproducts = document.getElementById('numberofproducts');
+    const addproductsuccess = document.getElementById('add-product-success');
+
+    var timeout; 
+    
+    cart.addEventListener('click', ()=>{
+      var quantity = document.getElementById('number').value;
+      var num = numberofproducts.textContent;
+      num = parseInt(num);
+      quantity = parseInt(quantity)
+      console.log(num)
+      console.log(quantity)
+      num+= quantity;
+      numberofproducts.innerHTML = num
+      addproductsuccess.style.display = "block";
+      timeout = setTimeout(hidefunction, 2000)
+
+      // COOKIE CHO GIỎ HÀNG
+      
+      var productorder = {
+        'product_id' :id.toString(),
+        'quantity' : quantity
+      }
+      
+      // document.cookie.JSON = true
+      console.log(productorder)
+      console.log(typeof(productorder))
+      // productorder = JSON.parse()
+      productorder = JSON.stringify(productorder)
+      // var e = 'Thu Nov 26 2023 15:44:38'; 
+      // document.cookie = 'myObj='+ JSON.stringify(productorder) +';expires=' + e;
+      document.cookie = id + "=" +productorder
+      console.log(document.cookie)
+      // decodedCookie = decodeURIComponent(document.cookie);
+      // console.log(decodedCookie)
+      
+
+    })
+    function hidefunction(){
+      addproductsuccess.style.display = "none";
+    }
+  </script>
+
 </body>
 
 </html>

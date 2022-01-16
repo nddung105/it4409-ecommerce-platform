@@ -16,7 +16,7 @@ body {
   z-index: 1;
 }
 */
-.login-form {
+.login-form, .form {
   width: 40%;
   min-height: 50vh;
   padding: 4rem;
@@ -72,7 +72,7 @@ body {
   display: none;
 }
 
-input[type=text], input[type=password], input[type=submit] {
+input[type=text], input[type=password], input[type=submit] , #submit{
   width: 100%;
   display: inline-block;
   padding: 1.2rem 2rem;
@@ -90,15 +90,18 @@ input[type=text]:focus, input[type=password]:focus {
   border: 1px solid var(--primary-color);
 }
 
-input[type=submit] {
+input[type=submit], #submit {
   color: var(--second-color);
   background-color: var(--primary-color);
   transition: 0.3s ease-out;
   margin: 3rem 0 0 0;
   border-radius: 50px;
+  cursor: pointer;
 }
-
-input[type=submit]:hover {
+#submit{
+  font-size: 18px;
+}
+input[type=submit]:hover, #submit {
   opacity: 0.8;
 }
 
@@ -113,7 +116,7 @@ input[type=submit]:hover {
     display: none;
   }
 
-  .login-form {
+  .login-form, .form {
     width: 100%;
     box-shadow: none;
   }
