@@ -158,10 +158,10 @@
 						<div id="bigTitle" class="title"></div>
 						<div class="content">
 						  <form action="#">
-							<div class ="spanOfImg">
-								<img class="prodImg" src="img/magicstick.jpg">
+							<!-- <div class ="spanOfImg">
+								<img class="prodImg" src="#">
 								<i class='bx bx-edit-alt'></i>
-							</div>
+							</div> -->
 							<div class="user-details">
 							  <div class="input-box">
 								<span class="details">Mã hóa đơn</span>
@@ -173,11 +173,17 @@
 							  </div>
 							  <div class="input-box">
 								<span  class="details">Mã sản phẩm</span>
-								<input id ="productID" type="text" placeholder="Mã sản phẩm" required>
+								<!-- <input id ="productID" type="text" placeholder="Mã sản phẩm" required> -->
+								<ul id = "productList">
+									
+								</ul>
 							  </div>
 							  <div class="input-box">
-								<span  class="details">Số lượng</span>
-								<input id ="quantity" type="text" placeholder="Số lượng" required>
+								<span  class="details">Thành tiền</span>
+								<!-- <input id ="quantity" type="text" placeholder="Số lượng" required> -->
+								<ul id ="quantityList">
+									
+								</ul>
 							  </div>
 							  <div class="input-box">
 								<span  class="total">Tổng tiền</span>
@@ -198,6 +204,10 @@
 							  <div class="input-box">
 								<span class="details">Trạng thái</span>
 								<input id="status" type="text" placeholder="Trạng thái" required>
+							  </div>
+							  <div class="input-box">
+								<span class="details">Ghi chú</span>
+								<input id="note" type="text" placeholder="Trạng thái" required>
 							  </div>
 							  <!-- <div class="input-box descrip-box">
 								<span class="details">Miêu tả</span>
@@ -242,6 +252,6 @@
 	<!-- CONTENT -->
 	
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
-	<script src="../js/admin_seller/Acc_Edit_script.js"></script>
+	<script src="../js/admin_seller/Oder_Edit_script.js"></script>
 </body>
 </html>

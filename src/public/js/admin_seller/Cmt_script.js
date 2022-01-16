@@ -92,6 +92,20 @@ window.addEventListener('resize', (event) =>{
 // 	}
 // })
 
+$.ajax({
+	url: "http://localhost:3000/api/v1/users/show_all_customer",
+	type: 'GET',
+	dataType: 'json', // added data type
+	headers: {
+		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbGUiLCJpZCI6bnVsbCwibmFtZSI6IlRLIFNBTEUiLCJyb2xlIjoic2FsZSIsImlhdCI6MTY0MjMwMjM0OX0.5R6-asHF7ylnZWvNb8dLdIq2228h9XEAxBVU3NFO6mA'
+	},
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		document.getElementById("numUser").innerHTML = res.data.length
+	}
+});
+
 //count visitor
 const countEl = document.getElementById('vistorCount');
 
@@ -252,7 +266,6 @@ function buildTable() {
 				<td>${myList[i].id}</td>
 				<td>${myList[i].product_id}</td>
 				<td>${myList[i].user_id}</td>
-				<td>Is reply</td>
 				<td>Created at</td>
 				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
