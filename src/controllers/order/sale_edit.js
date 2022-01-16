@@ -7,7 +7,7 @@ async function sale_edit(req, res, next) {
     let order = await Order.findOne({ where: { id: id } });
     if (order) {
       order.status = status;
-      await order.save();w
+      await order.save();
       return res.status(httpStatus.CREATED).json({
         id: order.id,
         address: order.address,

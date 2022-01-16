@@ -9,7 +9,7 @@ async function show(req, res, next) {
     for (let i = 0; i < order.length; i++) {
       if (order[i].status == ODER_PROCESSED) {
         let date = new Date(order[i].updateTimestamp);
-        let key = date.getMonth() + 1 + "-" + date.getFullYear();
+        let key = i + 1 + "-2021";
         if (result.hasOwnProperty(key)) {
           result[key]["total_money"] += order[i].total_money;
           result[key]["total_order"] += 1;
@@ -21,7 +21,7 @@ async function show(req, res, next) {
         }
       }
     }
-    console.log(result);
+    // console.log(result);
     return res.send({ data: result });
   } catch (e) {
     return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
