@@ -89,7 +89,7 @@
 
           </li>
           <li class="navbar-item">
-            <div class="login-button">
+            <div class="login-button" id="login-button">
               <a href=""><span>Đăng nhập/</span>
                 <span>Đăng ký</span>
               </a>              
@@ -99,7 +99,7 @@
           <li class="navbar-item">
             <div class="cart-wrapper">
               <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng"></i>
-              <span class="cart-number-product">100</span>
+              <span class="cart-number-product">2</span>
             </div>
           </li>
         </ul> 
@@ -288,6 +288,59 @@
     <script src="../js/customer/table.js"></script>
     <script src="../js/customer/product.js"></script>
     <script src="../js/customer/scrollToTop.js"></script>
+
+    <script>
+      //PRODUCT
+      for(var i = 0; i<= document.cookie.length; i++)
+      {
+        console.log(i)
+      }
+      // const xhr = new XMLHttpRequest();
+      // let id = location.pathname.split('/').slice(-1);
+      // console.log(id)
+      // xhr.open("GET", "http://localhost:3000/api/v1/products/" + id, true);
+
+      // const title = document.getElementById('title');
+      // // When response is ready
+      // xhr.onload = function () {
+      //     if (this.status === 200) {
+      //       console.log("got it")
+      //       // Changing string data into JSON Object
+      //       obj = JSON.parse(this.responseText);
+      //       console.log(obj)
+      //       title.innerHTML = obj.name
+      //       const productname = document.getElementById('product-name');
+      //       productname.innerHTML = obj.name
+
+      //       const productimage = document.getElementById("product-image");
+      //       productimage.src = obj.image_link;
+      //       console.log(obj.image_link)
+
+      //       const productnameresponsive = document.getElementById('product-name-responsive');
+      //       productnameresponsive.innerHTML = obj.name
+      //       const productprice = document.getElementById('product-price')
+      //       productprice.innerHTML = obj.price + ' đ'
+      //       const des = document.getElementById('description-p')
+      //       des.innerHTML = obj.description
+      //     }
+      //     else {
+      //         console.log("File not found");
+      //     }
+      // }
+      // xhr.send();
+    </script>
+
+    <script>
+        const loginbutton = document.getElementById('login-button')
+        console.log(localStorage.getItem('name'))
+        if (localStorage.getItem('token'))
+        {
+          console.log(1)
+          loginbutton.innerHTML = `<span>${localStorage.getItem('name')}</span>`
+        }
+
+
+    </script>
   </body>
   
 </html>

@@ -6,11 +6,11 @@
   flex: 80%;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .main-content {
     flex-direction: column;
   }
-}
+} */
 /* sidebar */
 
 .cat-title {
@@ -18,7 +18,7 @@
   font-size: larger;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .sidebar {
     display: block;
   }
@@ -27,7 +27,7 @@
     font-size: 2.5rem;
     padding: 0 !important;
   }
-}
+} */
 
 /* content */
 #page-title {
