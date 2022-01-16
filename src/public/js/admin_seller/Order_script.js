@@ -249,7 +249,7 @@ function buildTable() {
 }
 
 function openProdDetail(id){
-	localStorage.setItem("account",JSON.stringify(tableData2.find(x => x.id == id)))
+	localStorage.setItem("order",JSON.stringify(tableData2.find(x => x.id == id)))
 	console.log(tableData2.find(x => x.id == id))
 	location.href="../../../views/admin_seller/AdminSell_QlyOrder_Edit.html";
 	console.log(id);

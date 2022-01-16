@@ -7,7 +7,7 @@ const apiRouter = express.Router();
 
 apiRouter.use("/api/v1/", mainRoute);
 apiRouter.use("/files/", express.static(path.join(__dirname, "../files")));
-// apiRouter.use("/", express.static(path.join(__dirname, "../views")));
+apiRouter.use("/", express.static(path.join(__dirname, "../views")));
 apiRouter.use(
   "/customer",
   function (req, res, next) {
