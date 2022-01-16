@@ -28,21 +28,26 @@ Product.init(
     image_link:{
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    createdAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
+      field: 'created_at',
+      allowNull: false
+    },
+    updatedAt: {
+      type: Sequelize.DATE,
+      defaultValue: Sequelize.NOW,
+      field: 'updated_at',
+      allowNull: false
     }
-
   },
   {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: "product", // We need to choose the model name
+    modelName: "products", // We need to choose the model name
     // don't forget to enable timestamps!
     timestamps: false,
-
-    // I don't want createdAt
-    createdat: false,
-
-    // I want updatedAt to actually be called updateTimestamp
-    updatedat: false,
   }
 );
 

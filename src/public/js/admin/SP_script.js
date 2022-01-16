@@ -92,6 +92,28 @@ window.addEventListener('resize', (event) =>{
 // 	}
 // })
 
+//find product
+document.querySelector(".form-input button").addEventListener("click", ()=>{
+	var searchval = document.querySelector(".form-input input").value
+	console.log("Searching..........")
+	// http://localhost:3000/api/v1/products/search?query=hoang
+	$.ajax({
+		type:"POST",
+		url: "http://localhost:3000/api/v1/products/search?query=" + searchval,
+		success: function (res){
+			console.log(res);
+			// alert(res);
+			tableData2 = res
+			state.querySet=tableData2.data
+			state.page = 1
+			console.log(state.querySet)
+			$('#table-body').empty()
+			buildTable()
+
+		}
+	});
+})
+
 
 //Pagination
 
@@ -231,7 +253,7 @@ function buildTable() {
 	var myList = data.querySet
 
 	for (var i = 1 in myList) {
-		console.log(`adding data no ${i}`)
+		// console.log(`adding data no ${i}`)
 		var product = myList[i]
 		var row = `<tr>
 				<td>${myList[i].id}</td>

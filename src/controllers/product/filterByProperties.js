@@ -6,7 +6,7 @@ async function filterByProperties(req,res){
     const brand = req.query.brand
     const limit = req.query.limit
     const offset = req.query.offset
-    const condition = brand ? { brand: { [Op.like]:'%${brand}%'} }:null
+    const condition = brand ? { brand: { [Op.like]:`%${brand}%`} }:null
     const data = await Product.findAll({
       where:condition,
       limit:limit,
