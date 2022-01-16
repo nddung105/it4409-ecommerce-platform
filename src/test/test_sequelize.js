@@ -14,14 +14,14 @@
 //     console.error('Unable to connect to the database:');
 //   }
   
-const User = require('../models/Users')
+const Order = require('../models/Order')
 // User.sync({ force: true }).then(
 //     (res) => {console.log('----')}
 // )
 func =  async () => {
     // const user = await User.create({ username: 'Jane', name: 'Doe' , hashed_password:"sdfsfa"});
     // await user.save()
-    const users = await User.findAll();
+    const users = await Order.sync({ force: true });
     return users
 }
 
