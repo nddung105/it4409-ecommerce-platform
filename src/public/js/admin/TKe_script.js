@@ -97,25 +97,26 @@ window.addEventListener('resize', (event) =>{
 // })
 
 //http://localhost:3000/api/v1/order/sales_by_month
-$.ajax({
-	url: "http://localhost:3000/api/v1/order/sales_by_month",
-	type: 'GET',
-	dataType: 'json', // added data type
-	headers: {
-		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjEwLCJuYW1lIjoiVEsgQURNSU4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDIzMDUwMjN9.yJJFnXULEOoq96uZeRcVnkluU6zyQvmNZE6H8xGhMoc'
-	},
-	success: function(res) {
-		console.log(res);
-		// alert(res);
-		// document.getElementById("numUser").innerHTML = res.data.length
-		var doanhThu = res.data
-		var totalDoanhthu = 0  
-		for(let i=0; i <= doanhThu.length; i++){
-			totalDoanhthu += doanhThu[i].total_money
-		}
-		document.getElementById("doanhThu").innerHTML=totalDoanhthu
-	}
-});
+//fix
+// $.ajax({
+// 	url: "http://localhost:3000/api/v1/order/sales_by_month",
+// 	type: 'GET',
+// 	dataType: 'json', // added data type
+// 	headers: {
+// 		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjEwLCJuYW1lIjoiVEsgQURNSU4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDIzMDUwMjN9.yJJFnXULEOoq96uZeRcVnkluU6zyQvmNZE6H8xGhMoc'
+// 	},
+// 	success: function(res) {
+// 		console.log(res);
+// 		// alert(res);
+// 		// document.getElementById("numUser").innerHTML = res.data.length
+// 		var doanhThu = res.data
+// 		var totalDoanhthu = 0  
+// 		for(let i=0; i <= doanhThu.length; i++){
+// 			totalDoanhthu += doanhThu[i].total_money
+// 		}
+// 		document.getElementById("doanhThu").innerHTML=totalDoanhthu
+// 	}
+// });
 
 
 $.ajax({
