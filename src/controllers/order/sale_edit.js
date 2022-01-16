@@ -1,28 +1,12 @@
 const Order = require("../../models/Order");
 const httpStatus = require("../../constants/http_status");
 
-async function edit(req, res, next) {
+async function sale_edit(req, res, next) {
   try {
-    const { id, address, full_name, phone_number, note, status } = req.body;
-    console.log(req.body)
+    const { id, status } = req.body;
     let order = await Order.findOne({ where: { id: id } });
-    if (req.userId == order.user_id) {
-      const listPros = [
-        "id",
-        "address",
-        "full_name",
-        "phone_number",
-        "note",
-        "status",
-      ];
-      for (let i = 0; i < listPros.length; i++) {
-        let pro = listPros[i];
-        if (req.body.hasOwnProperty(pro)) {
-          if (req.body[pro]) {
-            order[pro] = req.body[pro];
-          }
-        }
-      }
+    if (order) {
+      order.status = status;
       await order.save();
       return res.status(httpStatus.CREATED).json({
         id: order.id,
@@ -46,4 +30,4 @@ async function edit(req, res, next) {
   }
 }
 
-module.exports = edit
+module.exports = sale_edit

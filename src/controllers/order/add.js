@@ -3,9 +3,9 @@ const httpStatus = require("../../constants/http_status");
 
 async function add(req, res, next) {
   try {
-    const { user_id, address, full_name, phone_number, note } = req.body;
+    const { address, full_name, phone_number, note } = req.body;
     let order = await Order.build({
-      user_id: user_id,
+      user_id: req.userId,
       address: address,
       full_name: full_name,
       phone_number: phone_number,

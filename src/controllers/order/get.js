@@ -3,7 +3,7 @@ const httpStatus = require("../../constants/http_status");
 
 async function get(req, res, next) {
   try {
-    const { order_id } = req.params.order_id;
+    const order_id = req.params.order_id;
     if (order_id) {
       let order_detail = await Order.findOne({ where: { id: order_id } });
       if (req.userId == order_detail.user_id) {
