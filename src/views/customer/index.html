@@ -193,7 +193,7 @@
     </div>
 
     <div class="product-container" id="product-container">
-      <a class="product-container-title" href="product.html">Sản phẩm nổi bật</a>
+      <a class="product-container-title" href="http://localhost:3000/products">Sản phẩm nổi bật</a>
       <div class="flex" id="products-flex">
         <!--
                       <div class="flex-item product-item" data-link="product-detail.html">
@@ -248,7 +248,7 @@
 
       </div>
 
-      <a class="more-product-btn" href="product.html">Xem thêm sản phẩm</a>
+      <a class="more-product-btn" href="http://localhost:3000/products">Xem thêm sản phẩm</a>
     </div>
   </main>
 
@@ -332,32 +332,31 @@
     // Open an obejct (GET/POST, PATH,
     // ASYN-TRUE/FALSE)
     xhr.open("GET", "http://localhost:3000/api/v1/products?limit=4&offset=0", true);
-
-    // When response is ready
     xhr.onload = function () {
-      if (this.status === 200) {
-        console.log("got it")
-        // Changing string data into JSON Object
-        obj = JSON.parse(this.responseText);
-        console.log(obj)
-        console.log(obj[0])
-        console.log(obj[0].brand);
-        console.log(obj.length);
-        // Getting the products dive element
-        let products = document.getElementById("products-flex");
-        str = "";
-        for (var i = 0; i < obj.length; i++) {
-          str +=
-            `
-                  <div class="flex-item product-item" data-link="product-detail.html">
-                    <img src="../assets/customer/product3.jpg">
+            if (this.status === 200) {
+              console.log("got it")
+              // Changing string data into JSON Object
+              obj = JSON.parse(this.responseText);
+              console.log(obj)
+              console.log(obj[0])
+              console.log(obj[0].brand);
+              console.log(obj.length);
+              // Getting the products dive element
+              let products = document.getElementById("products-flex");
+              str = "";
+              for (var i = 0; i<obj.length; i++ ){
+                str += 
+                `
+                  <div class="flex-item product-item" data-link="http://localhost:3000/products/${obj[i].id}">
+                    <img src="${obj[i].image_link}">
                     <p class="product-name"><span>${obj[i].name}</span></p>
                     <span class="product-price">${obj[i].price} đ</span>
                     <div class="add-cart-btn">
                       <i class="fas fa-cart-plus"></i>
                     </div>
                   </div>
-                `;
+                `; 
+
 
         }
         products.innerHTML = str;
