@@ -194,7 +194,7 @@
           </div>        
           <span id="numberofcomments"></span>
         </div>
-        <a href="" class="btn-vote">Viết đánh giá</a>
+        <a href="" class="btn-vote" id="btn-vote">Viết đánh giá</a>
 
       </div>
 
@@ -372,6 +372,10 @@
           productprice.innerHTML = obj.price + ' đ'
           const des = document.getElementById('description-p')
           des.innerHTML = obj.description
+
+          // comment button
+          const btnvote = document.getElementById('btn-vote')
+          btnvote.href = "http://localhost:3000/comment/" + id
         }
         else {
             console.log("File not found");
@@ -455,17 +459,23 @@
     const cart = document.getElementById("buy-btn");
     const numberofproducts = document.getElementById('numberofproducts');
     const addproductsuccess = document.getElementById('add-product-success');
-    var num = numberofproducts.textContent;
-    console.log(num)
-    var timeout 
+
+    var timeout; 
+    
     cart.addEventListener('click', ()=>{
-      num++;
+      var quantity = document.getElementById('number').value;
+      var num = numberofproducts.textContent;
+      num = parseInt(num);
+      quantity = parseInt(quantity)
+      console.log(num)
+      console.log(quantity)
+      num+= quantity;
       numberofproducts.innerHTML = num
       addproductsuccess.style.display = "block";
       timeout = setTimeout(hidefunction, 2000)
 
       // COOKIE CHO GIỎ HÀNG
-      var quantity = document.getElementById('number').value
+      
       var productorder = {
         'product_id' :id.toString(),
         'quantity' : quantity
