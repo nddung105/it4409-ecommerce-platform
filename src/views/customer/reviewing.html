@@ -124,9 +124,13 @@
         <p>Đang tải trang, bạn chờ một chút nhé ^^</p>
         <img src="../assets/customer/loading4-crop.gif" class="loading-gif">
       </div>
+
+      <div class="msg" id="msg">
+        <span>Bình luận của bạn chứa những từ ngữ không hợp lệ!!!</span>
+      </div>
       <div class="review-inner">
         <div class="review-head">
-          <h1>Dell Latitude 7480</h1>
+          <h1 id="productname">Dell Latitude 7480</h1>
           <h2>Đánh giá sản phẩm</h2>
         </div>
         <div class="review-form">
@@ -224,6 +228,10 @@
     <script src="../js/customer/reviewing.js"></script>
 
     <script>
+      let id = location.pathname.split('/').slice(-1);
+      id = parseInt(id)
+      console.log(typeof(id))
+      
       let rate = document.getElementsByClassName("fas fa-star").length;
       console.log(rate)
       // Instantiate an new XHR Object
@@ -234,15 +242,16 @@
         console.log(name, email, reviewcontent)
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:3000/api/v1/comments/?product_id=2");
+        xhr.open("POST", "http://localhost:3000/api/v1/comments");
 
           xhr.setRequestHeader("Accept", "application/json");
           xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
           let data = JSON.stringify({
+            product_id:id,
             rate:rate,
             name:name,
             email:email,
-            reviewcontent: reviewcontent
+            content: reviewcontent
           });
           // data = {
           //     "product_id":2,
@@ -251,8 +260,16 @@
           //     "email":"hoangnsv@gmail.com",
           //     "name":"viethoang"
           // }
+          const msg = document.getElementById('msg');
           xhr.onload=function(){
             console.log(xhr.response)
+            if(this.status == 400){              
+              msg.style.display = "block";
+              timeout = setTimeout(hidefunction, 2000)
+              function hidefunction(){
+               msg.style.display = "none";
+              }
+            }
           }
 
           console.log(typeof(data));
@@ -260,6 +277,26 @@
 
           
       })
+
+      // Get product name
+        const product = new XMLHttpRequest();
+        product.open("GET", "http://localhost:3000/api/v1/products/" + id, true);
+
+        // When response is ready
+        product.onload = function () {
+            if (this.status === 200) {
+              console.log("got it")
+              // Changing string data into JSON Object
+              obj = JSON.parse(this.responseText);
+              console.log(obj)
+              const productname = document.getElementById('productname');
+              productname.innerHTML = obj.name
+            }
+            else {
+                console.log("File not found");
+            }
+        }
+        product.send();
       
     </script>
   </body>
