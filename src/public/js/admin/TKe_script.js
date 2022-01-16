@@ -91,3 +91,14 @@ window.addEventListener('resize', (event) =>{
 // 		document.body.classList.remove('dark');
 // 	}
 // })
+const countEl = document.getElementById('vistorCount');
+
+updateVisitCount();
+
+function updateVisitCount() {
+	fetch('https://api.countapi.xyz/update/vinhvinh123/aloha/?amount=1')
+	.then(res => res.json())
+	.then(res => {
+		countEl.innerHTML = res.value;
+	})
+}

@@ -126,6 +126,11 @@ createDate.innerHTML = today
 
 //save
 saveBtn = document.getElementById("saveBtn")
+const inputElement = document.getElementById("myfile");
+inputElement.addEventListener("change", handleFiles, false);
+function handleFiles() {
+    const fileList = this.files;
+}
 //call Api
 saveBtn.addEventListener('click', () =>{
     Confirm.open({
@@ -133,6 +138,35 @@ saveBtn.addEventListener('click', () =>{
         message: 'Bạn có chắc muốn thêm sản phẩm này chứ?',
         onok: () => {
           //call api post
+            var values = {
+                "id": 50,
+                "name":document.getElementById("name").value,
+                "price":parseInt(document.getElementById("price").value),
+                "category":document.getElementById("category").value,
+                "brand":document.getElementById("brand").value,
+                "description":document.getElementById("descrip").value,
+                "myfile": inputElement.files[0]
+            }
+            // values = JSON.stringify(values);
+            var formData = new FormData()
+            formData.append("name",document.getElementById("name").value)
+            formData.append("price",parseInt(document.getElementById("price").value))
+            formData.append("category",document.getElementById("category").value)
+            formData.append("brand",document.getElementById("brand").value)
+            formData.append("description",document.getElementById("descrip").value)
+            formData.append("myfile",inputElement.files[0])
+
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:3000/api/v1/products/",
+                data: formData,
+                error: function(e) {
+                  console.log(e);
+                },
+                processData: false,
+                contentType: false,
+              });
+              //tam thoi k cum back ve trang chu
           location.href="./AdminSys_QlySP.html";
         }
       })
@@ -209,3 +243,19 @@ const Confirm = {
     }
 };
 
+//upload image
+window.addEventListener('load', function() {
+    document.querySelector('.uploadImg').addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+            var img = document.querySelector('.prodImg');
+            img.onload = () => {
+                URL.revokeObjectURL(img.src);  // no longer needed, free memory
+            }
+  
+            img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+
+            //Goi api update
+        }
+        console.log("Upload image")
+    });
+  });

@@ -106,7 +106,8 @@ document.getElementById("name").value= product.name
 document.getElementById("price").value= product.price
 document.getElementById("category").value= product.category
 document.getElementById("brand").value= product.brand
-
+document.getElementById("descrip").value= product.description
+document.querySelector('.prodImg').src = product.image_link
 var prodname = document.getElementById("name")
 var price = document.getElementById("price")
 var category = document.getElementById("category")
@@ -132,6 +133,37 @@ saveBtn.addEventListener('click', () =>{
 		}
 	else{
 		//call api to update
+        var values = {
+            "name":document.getElementById("name").value,
+            "price":document.getElementById("price").value,
+            "category":document.getElementById("category").value,
+            "brand":document.getElementById("brand").value,
+            "description":document.getElementById("descrip").value,
+            "image_link":"https://s3.ap-southeast-1.amazonaws.com/computer-ecommerce/aad6f126-5d4a-449f-8779-e14b07a5a1a9_screenshot%20from%202022-01-11%2007-59-18.png"
+        }
+
+        values = JSON.stringify(values);
+        console.log(values)
+        // {
+        //     "id": 3,
+        //     "name": "hoaaaang",
+        //     "price": 12,
+        //     "category": "aa",
+        //     "brand": "afasa",
+        //     "description": "asdas",
+        //     "image_link": null
+        // }
+
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/products/' + product.id,
+            type: 'put',
+            data: values,
+            dataType: 'json',
+            contentType:'application/json',
+            success: function(data) {
+            //   alert('Load was performed.');
+            }
+          });
 	}
 	location.href="./AdminSys_QlySP.html",true;
 	console.log("back")
@@ -214,7 +246,31 @@ delBtn.addEventListener('click', () => {
       message: 'Bạn có chắc muốn xóa sản phẩm này chứ?',
       onok: () => {
         //call api xoa
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/products/' + product.id,
+            type: 'DELETE',
+            success: function(result) {
+                // Do something with the result
+            }
+        });
         location.href="./AdminSys_QlySP.html";
       }
     })
+  });
+
+  //upload image
+  window.addEventListener('load', function() {
+    document.querySelector('.uploadImg').addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+            var img = document.querySelector('.prodImg');
+            img.onload = () => {
+                URL.revokeObjectURL(img.src);  // no longer needed, free memory
+            }
+  
+            img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+
+            //Goi api update
+        }
+        console.log("Upload image")
+    });
   });
