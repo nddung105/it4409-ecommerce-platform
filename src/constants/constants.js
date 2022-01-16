@@ -5,6 +5,9 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const DATABASE_URL = process.env.DATABASE_URL;
 const ROLE_ADMIN = 'admin'; // admin : full roles in admin website
 const ROLE_CUSTOMER = 'customer';
+const ODER_PROCESSING = "processing";
+const ODER_PROCESSED = "processed"
+const ODER_CANCEL = "cancel"
 const ROLE_SALE = 'sale'
 const TOXIC_WORDS = ['toxic',"bad"]
 const DOCUMENT_TYPE_VIDEO = 'video';
@@ -22,5 +25,8 @@ module.exports = {
     TOXIC_WORDS,
     DOCUMENT_TYPE_VIDEO,
     DOCUMENT_TYPE_IMAGE,
-    DOCUMENT_TYPE_OTHER
+    DOCUMENT_TYPE_OTHER,
+    ODER_PROCESSING,
+    ODER_PROCESSED,
+    ODER_CANCEL
 }

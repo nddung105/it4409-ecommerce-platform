@@ -15,8 +15,7 @@ async function login(req, res, next) {
         message: "Username or password incorrect",
       });
     }
-
-    const vaildPassword = bcrypt.compare(password, user.hashed_password);
+    const vaildPassword = await bcrypt.compare(password, user.hashed_password);
     if (!vaildPassword) {
       return res.status(httpStatus.BAD_REQUEST).json({
         message: "Username or password incorrect",
@@ -33,10 +32,10 @@ async function login(req, res, next) {
       JWT_SECRET
     );
 
-    if (user.role == ""){
-        // send index.html for Role
+    if (user.role == "") {
+      // send index.html for Role
     }
-    
+
     return res.status(httpStatus.OK).json({
       id: user.id,
       username: username,

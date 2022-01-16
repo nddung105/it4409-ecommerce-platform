@@ -96,16 +96,26 @@ window.addEventListener('resize', (event) =>{
 //Pagination
 
 var tableData2 =[
-	{
-		'id': '1',
-		'name': 'Abyss',
-		'email': '1@gmail.com',
-		'role' : "user",
-		'password': '123',
-		'created_at': '1/1/2000'
-	}
 ]
-
+//http://localhost:3000/api/v1/users/show
+$.ajax({
+	url: "http://localhost:3000/api/v1/users/show_all_customer",
+	type: 'GET',
+	dataType: 'json', // added data type
+	headers: {
+		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbGUiLCJpZCI6bnVsbCwibmFtZSI6IlRLIFNBTEUiLCJyb2xlIjoic2FsZSIsImlhdCI6MTY0MjMwMjM0OX0.5R6-asHF7ylnZWvNb8dLdIq2228h9XEAxBVU3NFO6mA'
+	},
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		tableData2 = res
+		state.querySet= tableData2.data
+		state.page = 1
+		console.log(state.querySet)
+		$('#table-body').empty()
+		buildTable()
+	}
+});
 
 /*
 1 - Loop Through Array & Access each value
@@ -227,7 +237,7 @@ function buildTable() {
 		var row = `<tr>
 				<td>${myList[i].id}</td>
 				<td>${myList[i].name}</td>
-				<td>${myList[i].email}</td>
+				<td>${myList[i].username}</td>
 				<td>${myList[i].role}</td>
 				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
@@ -248,8 +258,8 @@ function buildTable() {
 }
 
 function openProdDetail(id){
-	localStorage.setItem("account",JSON.stringify(tableData2.find(x => x.id == id)))
-	console.log(tableData2.find(x => x.id == id))
+	localStorage.setItem("account",JSON.stringify(tableData2.data.find(x => x.id == id)))
+	console.log(tableData2.data.find(x => x.id == id))
 	location.href="./AdminSys_QlyAcc_Edit.html";
 	console.log(id);
 }

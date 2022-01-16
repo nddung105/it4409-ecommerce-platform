@@ -96,15 +96,46 @@ window.addEventListener('resize', (event) =>{
 //Pagination
 
 var tableData2 =[
-	{
-		'id': '1',
-		'name': 'Abyss',
-		'email': '1@gmail.com',
-		'role' : "user",
-		'password': '123',
-		'created_at': '1/1/2000'
-	}
 ]
+$.ajax({
+	url: "http://localhost:3000/api/v1/order/show_all_order_user",
+	type: 'GET',
+	dataType: 'json', // added data type
+	headers: {
+		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5kZHVuZzEwNSIsImlkIjoyLCJuYW1lIjoiRHVuZ05EIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjQyMzA1NzcxfQ.Xqdy18YvsBqUIcxC3i083C2ij52RVUNo4qpRVhrnvsk'
+	},
+	success: function(res) {
+		console.log(res);
+		// alert(res);
+		tableData2 = res
+		state.querySet= tableData2.data
+		state.page = 1
+		// console.log(state.querySet)
+		$('#table-body').empty()
+		buildTable()
+	}
+});
+
+// http://localhost:3000/api/v1/order_detail/1
+$.ajax({
+	url: "http://localhost:3000/api/v1/order_detail/1",
+	type: 'GET',
+	dataType: 'json', // added data type
+	headers: {
+		'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im5kZHVuZzEwNSIsImlkIjoyLCJuYW1lIjoiRHVuZ05EIiwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNjQyMzA1NzcxfQ.Xqdy18YvsBqUIcxC3i083C2ij52RVUNo4qpRVhrnvsk'
+	},
+	success: function(res) {
+		console.log("Going detailed");
+		console.log(res);
+		// alert(res);
+		// tableData2 = res
+		// state.querySet= tableData2.data
+		// state.page = 1
+		// console.log(state.querySet)
+		// $('#table-body').empty()
+		// buildTable()
+	}
+});
 
 
 /*
@@ -226,10 +257,10 @@ function buildTable() {
 		var product = myList[i]
 		var row = `<tr>
 				<td>${myList[i].id}</td>
-				<td>${myList[i].name}</td>
-				<td>${myList[i].email}</td>
-				<td>${myList[i].role}</td>
-				<td>${myList[i].password}</td>
+				<td>${myList[i].user_id}</td>
+				<td>${myList[i].phone_number}</td>
+				<td>${myList[i].total_money}</td>
+				<td>${myList[i].status}</td>
 				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
 				// var detailTd = document.createElement("td")
@@ -249,9 +280,9 @@ function buildTable() {
 }
 
 function openProdDetail(id){
-	localStorage.setItem("account",JSON.stringify(tableData2.find(x => x.id == id)))
-	console.log(tableData2.find(x => x.id == id))
-	location.href="../../../views/admin_seller/AdminSell_QlyOrder_Edit.html";
+	localStorage.setItem("order",JSON.stringify(tableData2.data.find(x => x.id == id)))
+	console.log(tableData2.data.find(x => x.id == id))
+	location.href="./AdminSell_QlyOrder_Edit.html";
 	console.log(id);
 }
 
