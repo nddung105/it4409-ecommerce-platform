@@ -3,10 +3,12 @@ const httpStatus = require("../../constants/http_status");
 
 async function get(req, res, next) {
   try {
-    const { order_id } = req.params.order_id;
+    const order_id = req.params.order_id;
     if (order_id) {
-      let order_detail = await OrderDetail.findAll({where: {order_id: order_id}})
-      res.send({data: order_detail})
+      let order_detail = await OrderDetail.findAll({
+        where: { order_id: order_id },
+      });
+      res.send({ data: order_detail });
     } else {
       return res.status(httpStatus.BAD_REQUEST).json({
         message: "data empty",
@@ -19,4 +21,4 @@ async function get(req, res, next) {
   }
 }
 
-module.exports = get
+module.exports = get;

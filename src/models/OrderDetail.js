@@ -34,7 +34,7 @@ OrderDetail.init(
   {
     // Other model options go here
     sequelize, // We need to pass the connection instance
-    modelName: "oderdetail", // We need to choose the model name
+    modelName: "order_detail", // We need to choose the model name
     // don't forget to enable timestamps!
     timestamps: true,
 

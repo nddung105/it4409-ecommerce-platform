@@ -5,6 +5,6 @@ const auth = require("../middlewares/validate");
 const { order_detail: orderDetailController } = require("../controllers");
 
 router.post("/add", validJWT, orderDetailController.add);
-router.post("/:order_id", validJWT, orderDetailController.get);
+router.get("/:order_id", validJWT, orderDetailController.get);
 
 module.exports = router;
