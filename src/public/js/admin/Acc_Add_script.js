@@ -132,9 +132,48 @@ saveBtn.addEventListener('click', () =>{
 	Confirm.open({
         title: 'Xác nhận thêm tài khoản',
         message: 'Bạn có chắc muốn thêm tài khoản này chứ?',
+        // {
+        //     "id": 1,
+        //     "username": "nddung1052",
+        //     "hashed_password": "$2b$10$ayHE7G/obzz0dyeenEFvVeU3AViw6okeksXd2wKp39z/BLjV.na2W",
+        //     "name": "Nguyen Dinh Dung",
+        //     "role": "customer",
+        //     "phonenumber": null,
+        //     "avatar": null,
+        //     "createdAt": "2021-12-19T07:59:10.748Z",
+        //     "updateTimestamp": "2021-12-19T07:59:10.748Z"
+        // }
         onok: () => {
+            var values = {
+                "username": document.getElementById("username").value,
+                "password": document.getElementById("pass").value,
+                "name": document.getElementById("name").value
+            }
+            // values = JSON.stringify(values);
+            var formData = new FormData()
+            formData.append("username", document.getElementById("username").value)
+            formData.append("password", document.getElementById("pass").value)
+            formData.append("name", document.getElementById("name").value)
+            // formData.append("brand",document.getElementById("brand").value)
+            // formData.append("description",document.getElementById("descrip").value)
+            // formData.append("myfile",inputElement.files[0])
+
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:3000/api/v1/users/register_sale",
+                data: formData,
+                headers: {
+                    'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjEwLCJuYW1lIjoiVEsgQURNSU4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2NDIzMDUwMjN9.yJJFnXULEOoq96uZeRcVnkluU6zyQvmNZE6H8xGhMoc'
+                },
+                error: function(e) {
+                  console.log(e);
+                },
+                processData: false,
+                contentType: false,
+              });
           //call api post
-          location.href="./AdminSys_QlyAcc.html";
+        //fix xong thi uncomment dong duoi
+        //   location.href="./AdminSys_QlyAcc.html";
         }
       })
 	//post api
@@ -143,7 +182,7 @@ saveBtn.addEventListener('click', () =>{
 //
 
 //delete
-delBtn = document.querySelector(".btn-delete")
+// delBtn = document.querySelector(".btn-delete")
 
 const Confirm = {
     open (options) {
@@ -212,13 +251,13 @@ const Confirm = {
     }
 };
 
-delBtn.addEventListener('click', () => {
-    Confirm.open({
-      title: 'Xác nhận xóa tài khoản',
-      message: 'Bạn có chắc muốn xóa tài khoản này chứ?',
-      onok: () => {
-        //call api xoa
-        location.href="./AdminSys_QlyAcc.html";
-      }
-    })
-  });
+// delBtn.addEventListener('click', () => {
+//     Confirm.open({
+//       title: 'Xác nhận xóa tài khoản',
+//       message: 'Bạn có chắc muốn xóa tài khoản này chứ?',
+//       onok: () => {
+//         //call api xoa
+//         location.href="./AdminSys_QlyAcc.html";
+//       }
+//     })
+//   });
