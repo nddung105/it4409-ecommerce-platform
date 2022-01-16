@@ -43,8 +43,10 @@ function clickProduct(event) {
 }
 
 var elements = document.getElementsByClassName("product-item");
+console.log(elements)
 for(var i = 0; i < elements.length; ++i) {
   elements[i].addEventListener('click', (event) => {
     clickProduct(event);
   })
 }
+

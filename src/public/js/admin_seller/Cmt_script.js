@@ -266,7 +266,7 @@ function buildTable() {
 				<td>${myList[i].id}</td>
 				<td>${myList[i].product_id}</td>
 				<td>${myList[i].user_id}</td>
-				<td>Created at</td>
+				<td>${myList[i].createdAt.replace("T"," ").replace("Z"," ")}</td>
 				<td><span class="status completed" onclick="openProdDetail(${myList[i].id})">Xem</span></td>
 				`
 				// var detailTd = document.createElement("td")

@@ -134,3 +134,15 @@
     margin-left: 200px;
   }
 }
+
+
+#add-product-success{
+  background-color: rgb(19, 84, 138);
+  width: 300px;
+  position: absolute;
+  right: 20px;
+  padding: 20px;
+  border-radius: 20px ;
+  color: #fff;
+  display: none;
+}
