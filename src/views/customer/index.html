@@ -31,8 +31,8 @@
           <li class="navbar-item">
             <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
           </li>
-          <li class="navbar-item">
-            <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
+          <li class="navbar-item" id="products-cates">
+            <a href="#" class="navbar-item-link" title="Sản phẩm" >Sản phẩm</a>
           </li>
           <li class="navbar-item">
             <a href="#" class="navbar-item-link" title="Liên hệ">Liên hệ</a>
@@ -115,6 +115,20 @@
           </li>
         </ul>
       </div>
+      <!--Menu cac loai san pham-->
+      <div class="product-cate-link" id="product-cate-link">
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Dell</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">HP</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Razer</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Lenovo</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Asus</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Acer</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Microsoft</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Apple</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">MSI</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">LG</a>
+      </div>
+
     </header>
     <!-- <div class="loading-wrapper">
       <img src="../assets/customer/loading5.gif">
@@ -173,10 +187,11 @@
 
       </div>
 
-      <div class="product-container">
+      <div class="product-container" id="product-container">
         <a class="product-container-title" href="product.html">Sản phẩm nổi bật</a>
-        <div class="flex">
-          <div class="flex-item product-item" data-link="product-detail.html">
+        <div class="flex" id="products-flex">
+          <!--
+                      <div class="flex-item product-item" data-link="product-detail.html">
             <img src="../assets/customer/product1.jpg">
             <p class="product-name"><span>Dell 7480 abadbjkd adjweoidh aaaaaaaaaaaaaaaaaaaaaaaaa</span></p>
             <span class="product-price">15.000.000 đ</span>
@@ -224,6 +239,8 @@
               <i class="fas fa-cart-plus"></i>
             </div>
           </div>
+          -->
+
         </div>
 
         <a class="more-product-btn" href="product.html">Xem thêm sản phẩm</a>
@@ -292,6 +309,58 @@
     <script src="../js/customer/index.js"></script>
     <script src="../js/customer/scrollToTop.js"></script>
     <script src="../js/customer/product.js"></script>
+
+    <script>
+        // Instantiate an new XHR Object
+        const xhr = new XMLHttpRequest();
+
+        // Open an obejct (GET/POST, PATH,
+        // ASYN-TRUE/FALSE)
+        xhr.open("GET", "http://localhost:3000/api/v1/products?limit=4&offset=0", true);
+
+        // When response is ready
+        xhr.onload = function () {
+            if (this.status === 200) {
+              console.log("got it")
+              // Changing string data into JSON Object
+              obj = JSON.parse(this.responseText);
+              console.log(obj)
+              console.log(obj[0])
+              console.log(obj[0].brand);
+              console.log(obj.length);
+              // Getting the products dive element
+              let products = document.getElementById("products-flex");
+              str = "";
+              for (var i = 0; i<obj.length; i++ ){
+                str += 
+                `
+                  <div class="flex-item product-item" data-link="product-detail.html">
+                    <img src="../assets/customer/product3.jpg">
+                    <p class="product-name"><span>${obj[i].name}</span></p>
+                    <span class="product-price">${obj[i].price} đ</span>
+                    <div class="add-cart-btn">
+                      <i class="fas fa-cart-plus"></i>
+                    </div>
+                  </div>
+                `; 
+                            
+              }
+              products.innerHTML = str;   
+            //  <div class="flex-item product-item" data-link="product-detail.html">
+            //   <img src="../assets/customer/product3.jpg">
+            //   <p class="product-name"><span>Laptop Asus VivoBook S15 S533EA-BQ018T (Core i5-1135G7/ 8GB DDR4 3200MHz/ 512GB M.2 NVMe PCIe 3.0/ 15.6 FHD/ Win10) - Hàng Chính Hãng</span></p>
+            //   <span class="product-price">15.000.000 đ</span>
+            //   <div class="add-cart-btn">
+            //     <i class="fas fa-cart-plus"></i>
+            //   </div>
+            // </div>
+            }
+            else {
+                console.log("File not found");
+            }
+        }
+        xhr.send();
+    </script>
   </body>
   
 </html>

@@ -117,19 +117,21 @@
 
     <main class="main-content">
       <img src="../assets/customer/login.svg" alt="login img" class="img-side">
-      <form class="login-form" action="#" method="post">
+      <!--<form class="login-form" action="#" method="post">-->
+      
         <!-- <div class="login-imgcontainer">
           <img src="../assets/customer/logo-side180_60px.png" alt="logo" class="logo">
         </div> -->
+      <div class="form">
         <div class="login-imgcontainer">
           <h2>Đăng nhập</h2>
         </div>
         <div class="login-container">
           <div class="label-container">
             <label class="label-item" for="username">Tên đăng nhập</label>
-            <span>Chưa có tài khoản? <a href="sign-up.html">Đăng ký</a></span>
+            <span>Chưa có tài khoản? <a href="/signup">Đăng ký</a></span>
           </div>
-          <input type="text" placeholder="Nhập tên đăng nhập" name="username" class="username-input" required>
+          <input type="text" placeholder="Nhập tên đăng nhập" name="username" class="username-input" id="username" required>
 
 
           <div class="label-container">
@@ -144,11 +146,14 @@
             </div>
           </div>
           <input type="password" placeholder="Nhập mật khẩu" name="password" id="password" class="password-input" required>
-          
-          <label><input type="checkbox" checked="checked" name="remember" class="remember-password">Lưu thông tin đăng nhập</label>
-          <input type="submit" value="Đăng Nhập">
+          <!-- <label><input type="checkbox" checked="checked" name="remember" class="remember-password">Lưu thông tin đăng nhập</label>
+-->
+          <button id="submit">Đăng nhập</button>
         </div>
-      </form>
+      </div>
+
+      <!--</form>-->
+      
     </main>
 
     <footer class="footer">
@@ -211,6 +216,45 @@
 
     <script src="../js/customer/index.js"></script>
     <script src="../js/customer/scrollToTop.js"></script>
+
+    <script>
+              // Instantiate an new XHR Object
+        document.getElementById("submit").addEventListener('click', () =>{
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "http://localhost:3000/api/v1/users/login");
+          // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          // When response is ready
+          // xhr.onload = function () {
+            
+          // }
+          // var body = 'username='+username+'&password='+password+'&name='+name;
+          // console.log(body);
+          // xhr.send("username=endlesshn&password=fdf&name=tung");
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            let data = JSON.stringify({
+              username:username,
+              password:password,
+            });
+            xhr.onload=function(){
+              if(this.status == 200){
+                
+              }
+              console.log(xhr.response)
+              // SAU KHI HOAN THANH DANG KI
+            }
+            // var data = `{
+            //   "username": "endlesshn",
+            //   "password": "tungcoloa",
+            //   "name": "nguyentung"
+            // }`;
+            console.log(typeof(data));
+            xhr.send(data);
+            })
+            
+    </script>
   </body>
   
 </html>

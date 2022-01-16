@@ -122,20 +122,28 @@
 
     <main class="main-content">
       <img src="../assets/customer/sign_up.svg" alt="login img" class="img-side">
-      <form class="login-form" action="#" method="post">
+
+      <!--<form class="login-form">-->
+      
+      
         <!-- <div class="login-imgcontainer">
           <img src="../assets/customer/logo-side180_60px.png" alt="logo" class="logo">
         </div> -->
+      <div class="form">
         <div class="login-imgcontainer">
           <h2>Đăng ký</h2>
         </div>
-        <div class="login-container">
+        <div class="login-container">          
           <div class="label-container">
             <label class="label-item" for="username">Tên đăng nhập</label>
-            <span>Đã có tài khoản? <a href="login.html">Đăng nhập</a></span>
+            <span>Đã có tài khoản? <a href="/login">Đăng nhập</a></span>
           </div>
-          <input type="text" name="username" required>
+          <input type="text" name="username" id="username" required >
 
+          <div class="label-container">
+            <label class="label-item" for="name">Họ và tên</label>
+          </div>
+          <input type="text" name="name" id="name" required>
 
           <div class="label-container">
             <label class="label-item" for="password">Mật khẩu</label>
@@ -150,6 +158,9 @@
           </div>
           <input type="password" name="password" id="password" required>
 
+
+          
+<!--
           <div class="label-container">
             <label class="label-item" for="password">Nhập lại mật khẩu</label>
             <div class="show-hide-pwd" id="show-pwd2" onclick="showPwd('hide-pwd2', 'show-pwd2', 'password-retype')">
@@ -162,15 +173,18 @@
             </div>
           </div>
           <input type="password" name="password-retype" id="password-retype" required>
-
+-->
           
           
-          <input type="submit" value="Đăng ký miễn phí">
+          <button id="submit">Đăng kí</button>
           <p class="sign-up-notice">Bằng việc nhấn vào nút "Đăng ký miễn phí", bạn sẽ được tạo tài khoản, và chấp nhận 
             <a href="">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a> của eShop
           </p>
         </div>
-      </form>
+      </div>
+
+      <!--</form>-->
+      
     </main>
 
     <footer class="footer">
@@ -233,6 +247,47 @@
 
     <script src="../js/customer/index.js"></script>
     <script src="../js/customer/scrollToTop.js"></script>
+
+    <script>
+        // Instantiate an new XHR Object
+        document.getElementById("submit").addEventListener('click', () =>{
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+          const name = document.getElementById("name").value;
+          const xhr = new XMLHttpRequest();
+          xhr.open("POST", "http://localhost:3000/api/v1/users/register");
+          // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          // When response is ready
+          // xhr.onload = function () {
+            
+          // }
+          // var body = 'username='+username+'&password='+password+'&name='+name;
+          // console.log(body);
+          // xhr.send("username=endlesshn&password=fdf&name=tung");
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            let data = JSON.stringify({
+              username:username,
+              password:password,
+              name: name
+            });
+            xhr.onload=function(){
+              console.log(xhr.response)
+              // SAU KHI HOAN THANH DANG KI
+              location.replace("https://www.w3schools.com")
+            }
+            // var data = `{
+            //   "username": "endlesshn",
+            //   "password": "tungcoloa",
+            //   "name": "nguyentung"
+            // }`;
+            console.log(typeof(data));
+            xhr.send(data);
+
+            
+        })
+        
+    </script>
   </body>
   
 </html>
