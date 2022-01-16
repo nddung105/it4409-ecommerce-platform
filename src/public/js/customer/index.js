@@ -56,9 +56,23 @@ function doneLoading() {
 }
 
 window.onload = () => {
-	// setTimeout(() => {doneLoading()}, 1000);
+	setTimeout(() => {doneLoading()}, 2000);
 	doneLoading();
 }
+
+const cube = document.getElementById('products-cates')
+const container = document.getElementById('product-cate-link')
+var click = 0
+cube.addEventListener('click', () => {
+	click ++;
+	if(click%2 == 1){
+		container.style.display = "inline-block"
+	}
+	else{
+		container.style.display = "none"
+	}
+})
+// cube.addEventListener('mouseleave', () => container.style.display = "none")
 
 
 
