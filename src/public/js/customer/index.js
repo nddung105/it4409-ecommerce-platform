@@ -75,7 +75,13 @@ cube.addEventListener('click', () => {
 // cube.addEventListener('mouseleave', () => container.style.display = "none")
 
 
-
+// const loginbutton = document.getElementById('login-button')
+// console.log(localStorage.getItem('name'))
+// if (localStorage.getItem('token'))
+// {
+// 	console.log(1)
+// 	loginbutton.innerHTML = `<span>${localStorage.getItem('name')}</span>`
+// }
 
 
 
