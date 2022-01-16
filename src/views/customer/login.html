@@ -29,8 +29,8 @@
           <li class="navbar-item">
             <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
           </li>
-          <li class="navbar-item">
-            <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
+          <li class="navbar-item" id="products-cates">
+            <a href="#" class="navbar-item-link" title="Sản phẩm" >Sản phẩm</a>
           </li>
           <li class="navbar-item">
             <a href="#" class="navbar-item-link" title="Liên hệ">Liên hệ</a>
@@ -113,6 +113,20 @@
           </li>
         </ul>
       </div>
+      <!--Menu cac loai san pham-->
+      <div class="product-cate-link" id="product-cate-link">
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Dell</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">HP</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Razer</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Lenovo</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Asus</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Acer</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Microsoft</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">Apple</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">MSI</a>
+        <a href="index.html" class="navbar-item-link" title="Trang chủ">LG</a>
+      </div>
+
     </header>
 
     <main class="main-content">
@@ -240,9 +254,20 @@
             });
             xhr.onload=function(){
               if(this.status == 200){
-                
+                if ( typeof(Storage) !== "undefined") {
+                  console.log('ho tro')
+                }
+                var obj = JSON.parse(xhr.response);
+                localStorage.setItem('user_id', obj.id)
+                localStorage.setItem('token', obj.token)
+                localStorage.setItem('name', obj.name)
+                var token = localStorage.getItem('token')
+                console.log(obj['id'], obj)
+                console.log(localStorage.getItem('name'))
+                window.location.replace("http://localhost:3000/");
               }
               console.log(xhr.response)
+              
               // SAU KHI HOAN THANH DANG KI
             }
             // var data = `{

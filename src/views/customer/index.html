@@ -86,7 +86,7 @@
 
           </li>
           <li class="navbar-item">
-            <div class="login-button">
+            <div class="login-button" id="login-button">
               <a href=""><span>Đăng nhập/</span>
                 <span>Đăng ký</span>
               </a>              
@@ -96,7 +96,7 @@
           <li class="navbar-item">
             <div class="cart-wrapper">
               <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng"></i>
-              <span class="cart-number-product">100</span>
+              <span class="cart-number-product">0</span>
             </div>
           </li>
         </ul> 
@@ -354,6 +354,13 @@
             //     <i class="fas fa-cart-plus"></i>
             //   </div>
             // </div>
+              const loginbutton = document.getElementById('login-button')
+              console.log(localStorage.getItem('name'))
+              if (localStorage.getItem('token'))
+              {
+                console.log(1)
+                loginbutton.innerHTML = `<span>${localStorage.getItem('name')}</span>`
+              }
             }
             else {
                 console.log("File not found");
