@@ -1,6 +1,6 @@
 const OrderDetail = require("../../models/OrderDetail");
 const Product = require("../../models/Product");
-const Order = require("../../models/Order")
+const Order = require("../../models/Order");
 const httpStatus = require("../../constants/http_status");
 
 async function add(req, res, next) {
@@ -9,7 +9,7 @@ async function add(req, res, next) {
     if (order_id && product_id && quantity) {
       const product = await Product.findOne({ where: { id: product_id } });
       const order = await Order.findOne({ where: { id: order_id } });
-      if (req.userId == order.user_id){
+      if (req.userId == order.user_id) {
         let total_money = parseFloat(quantity) * parseFloat(product.price);
         let order_detail = await OrderDetail.build({
           order_id: order_id,
@@ -18,7 +18,7 @@ async function add(req, res, next) {
           total_money: total_money,
         });
         let total_order = order.total_money;
-        order.total_money = total_money + total_order
+        order.total_money = total_money + total_order;
         await order.save();
         await order_detail.save();
         return res.status(httpStatus.CREATED).json({
@@ -28,8 +28,7 @@ async function add(req, res, next) {
           quantity: quantity,
           total_money: total_money,
         });
-      }
-      else{
+      } else {
         return res.status(httpStatus.UNAUTHORIZED).json({
           message: "UNAUTHORIZED",
         });
@@ -46,4 +45,4 @@ async function add(req, res, next) {
   }
 }
 
-module.exports = add
+module.exports = add;
