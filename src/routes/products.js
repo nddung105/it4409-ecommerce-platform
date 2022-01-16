@@ -12,4 +12,5 @@ router.get('/:id',productController.findProductById)
 router.put('/:id',productController.modifyProduct)
 router.get('',productController.filterByProperties)
 router.post('/search',productController.searchProduct)
+
 module.exports = router
