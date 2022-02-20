@@ -42,4 +42,13 @@ npm start
 
 ```
 
-5- Kết quả: http://localhost:3000/
+5- Kết quả: 
+http://localhost:3000/ là trang bán hàng
+
+Tiến hành đăng nhập với tài khoản admin để vào trang admin hệ thống:
+- Tên đăng nhập: admin
+- Mật khẩu: admin
+
+Tiến hành đăng nhập với tài khoản admin bán hàng để vào trang admin bán hàng:
+- Tên đăng nhập: 
+- Mật khẩu: 
