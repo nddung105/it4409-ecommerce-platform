@@ -50,5 +50,5 @@ Tiến hành đăng nhập với tài khoản admin để vào trang admin hệ 
 - Mật khẩu: admin
 
 Tiến hành đăng nhập với tài khoản admin bán hàng để vào trang admin bán hàng:
-- Tên đăng nhập: 
-- Mật khẩu: 
+- Tên đăng nhập: sale
+- Mật khẩu: sale
