@@ -26,13 +26,13 @@
           <i class="fas fa-bars navbar-icon"></i>
         </li>
         <li class="navbar-item">
-          <a href="#"><img src="../assets/customer/logo-side1200_400px.png" alt="logo eshop" class="logo"></a>
+          <a href="http://localhost:3000/"><img src="../assets/customer/logo-side1200_400px.png" alt="logo eshop" class="logo"></a>
         </li>
       </ul>
 
       <ul class="navbar-nav navbar-tab">
         <li class="navbar-item">
-          <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
+          <a href="http://localhost:3000/" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
         </li>
         <li class="navbar-item" id="products-cates">
           <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
@@ -70,13 +70,13 @@
 
           <ul id="user-menu" class="dropdown-menu">
             <li class="dropdown-menu-item">
-              <a href="user_info.html" class="dropdown-menu-link">
+              <a href="/user_info" class="dropdown-menu-link">
                 <i class="fas fa-user"></i>
                 <span>Thông tin tài khoản</span>
               </a>
             </li>
             <li class="dropdown-menu-item">
-              <a href="history_transaction.html" class="dropdown-menu-link">
+              <a href="/history_transaction" class="dropdown-menu-link">
                 <i class="fas fa-shopping-bag"></i>
                 <span>Lịch sử mua hàng</span>
               </a>
@@ -92,7 +92,7 @@
         </li>
         <li class="navbar-item">
           <div class="login-button" id="login-sigup">
-            <a href="login.html"><span>Đăng nhập/</span>
+            <a href="/login"><span>Đăng nhập/</span>
               <span>Đăng ký</span>
             </a>
           </div>
@@ -100,8 +100,8 @@
 
         <li class="navbar-item">
           <div class="cart-wrapper">
-            <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng"></i>
-            <span class="cart-number-product">100</span>
+            <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng" id="cart"></i>
+            <span class="cart-number-product">0</span>
           </div>
         </li>
       </ul>
@@ -110,10 +110,10 @@
     <div class="navbar-column" id="navbar-menu">
       <ul class="navbar-nav-column ">
         <li class="navbar-item-column">
-          <a href="index.html" class="navbar-link-column" title="Trang chủ">Trang chủ</a>
+          <a href="http://localhost:3000/" class="navbar-link-column" title="Trang chủ">Trang chủ</a>
         </li>
         <li class="navbar-item-column">
-          <a href="#" class="navbar-link-column" title="Sản phẩm">Sản phẩm</a>
+          <a href="http://localhost:3000/products" class="navbar-link-column" title="Sản phẩm">Sản phẩm</a>
         </li>
         <li class="navbar-item-column">
           <a href="#" class="navbar-link-column" title="Liên hệ">Liên hệ</a>
@@ -122,16 +122,16 @@
     </div>
     <!--Menu cac loai san pham-->
     <div class="product-cate-link" id="product-cate-link">
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">Dell</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">HP</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">Razer</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">Lenovo</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">Asus</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">Acer</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">Microsoft</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">Apple</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">MSI</a>
-      <a href="index.html" class="navbar-item-link" title="Trang chủ">LG</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Dell</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">HP</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Razer</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Lenovo</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Asus</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Acer</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Microsoft</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Apple</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">MSI</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">LG</a>
     </div>
 
   </header>
@@ -323,12 +323,12 @@
       localStorage.removeItem("name");
 
     }
-    const xhr = new XMLHttpRequest();
     var token = localStorage.getItem("token")
     var name = localStorage.getItem("name")
     if (token) {
       document.getElementById("login-sigup").innerHTML = name
     }
+    const xhr = new XMLHttpRequest();
     // Open an obejct (GET/POST, PATH,
     // ASYN-TRUE/FALSE)
     xhr.open("GET", "http://localhost:3000/api/v1/products?limit=4&offset=0", true);
@@ -368,6 +368,19 @@
         //     <i class="fas fa-cart-plus"></i>
         //   </div>
         // </div>
+        function clickProduct(event) {
+              console.log(event.target)
+              var link = event.target.getAttribute("data-link");
+              window.open(link);
+            
+          }
+          var elements = document.getElementsByClassName("product-item");
+          console.log(elements)
+          for(var i = 0; i < elements.length; ++i) {
+            elements[i].addEventListener('click', (event) => {
+              clickProduct(event);
+            })
+          }
       }
       else {
         console.log("File not found");

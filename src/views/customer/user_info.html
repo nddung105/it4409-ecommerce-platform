@@ -15,47 +15,50 @@
   <!--  -->
   <link rel="stylesheet" type="text/css" href="../css/customer/error_page.css">
   <link rel="stylesheet" type="text/css" href="../css/customer/user.css">
+  <link rel="stylesheet" type="text/css" href="../css/customer/index.css">
 </head>
 
 <body class="overlay-scrollbar">
   <header class="header" id="header">
     <!-- navbar -->
-    
+
     <div class="navbar">
       <ul class="navbar-nav">
         <li class="navbar-item" id="navbar-menu-btn" onclick="toggleMenu()">
           <i class="fas fa-bars navbar-icon"></i>
         </li>
         <li class="navbar-item">
-          <a href="#"><img src="../assets/customer/logo-side1200_400px.png" alt="logo eshop" class="logo"></a>
+          <a href="http://localhost:3000/"><img src="../assets/customer/logo-side1200_400px.png" alt="logo eshop" class="logo"></a>
         </li>
-      </ul> 
+      </ul>
 
       <ul class="navbar-nav navbar-tab">
         <li class="navbar-item">
-          <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
+          <a href="http://localhost:3000/" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
         </li>
-        <li class="navbar-item">
+        <li class="navbar-item" id="products-cates">
           <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
         </li>
         <li class="navbar-item">
           <a href="#" class="navbar-item-link" title="Liên hệ">Liên hệ</a>
         </li>
-      </ul> 
+      </ul>
 
       <div class="search-form-desktop">
         <form action="/pages/search-results-page" class="search-form">
-            <input type="text" aria-label="Search products" placeholder="Tìm sản phẩm" class="search-input" id="search-input">
-            <button class="search-button" type="submit" aria-label="Search">
-                <span class="search-icon"><i class="fas fa-search"></i></span>
-            </button>
+          <input type="text" aria-label="Search products" placeholder="Tìm sản phẩm" class="search-input"
+            id="search-input">
+          <button class="search-button" type="submit" aria-label="Search">
+            <span class="search-icon"><i class="fas fa-search"></i></span>
+          </button>
         </form>
       </div>
-      
+
       <ul class="navbar-nav">
         <li class="navbar-item dropdown search-form-mobile">
-          <i class="fas fa-search navbar-search-icon navbar-icon dropdown-toggle" data-toggle="search-menu" title="Tìm kiếm"></i>
-          
+          <i class="fas fa-search navbar-search-icon navbar-icon dropdown-toggle" data-toggle="search-menu"
+            title="Tìm kiếm"></i>
+
           <div id="search-menu" class="dropdown-menu search-bar">
             <form method="GET" action="Search" id="search-form" autocomplete="off">
               <input type="search" placeholder="Nhập thông tin sản phẩm, danh mục" name="searchValue" id="search-bar">
@@ -69,19 +72,19 @@
 
           <ul id="user-menu" class="dropdown-menu">
             <li class="dropdown-menu-item">
-              <a href="user_info.html" class="dropdown-menu-link">
+              <a href="/user_info" class="dropdown-menu-link">
                 <i class="fas fa-user"></i>
                 <span>Thông tin tài khoản</span>
               </a>
             </li>
             <li class="dropdown-menu-item">
-              <a href="history_transaction.html" class="dropdown-menu-link">
+              <a href="/history_transaction" class="dropdown-menu-link">
                 <i class="fas fa-shopping-bag"></i>
                 <span>Lịch sử mua hàng</span>
               </a>
             </li>
             <li class="dropdown-menu-item">
-              <a href="index_notlogin.html" class="dropdown-menu-link">
+              <a href="" class="dropdown-menu-link" onclick="logout()">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng xuất</span>
               </a>
@@ -90,35 +93,49 @@
 
         </li>
         <li class="navbar-item">
-          <div class="login-button">
-            <a href=""><span>Đăng nhập/</span>
+          <div class="login-button" id="login-sigup">
+            <a href="/login"><span>Đăng nhập/</span>
               <span>Đăng ký</span>
-            </a>              
+            </a>
           </div>
         </li>
 
         <li class="navbar-item">
           <div class="cart-wrapper">
-            <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng"></i>
-            <span class="cart-number-product">100</span>
+            <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng" id="cart"></i>
+            <span class="cart-number-product">0</span>
           </div>
         </li>
-      </ul> 
-      
+      </ul>
+
     </div>
     <div class="navbar-column" id="navbar-menu">
       <ul class="navbar-nav-column ">
         <li class="navbar-item-column">
-          <a href="index.html" class="navbar-link-column" title="Trang chủ">Trang chủ</a>
+          <a href="http://localhost:3000/" class="navbar-link-column" title="Trang chủ">Trang chủ</a>
         </li>
         <li class="navbar-item-column">
-          <a href="#" class="navbar-link-column" title="Sản phẩm">Sản phẩm</a>
+          <a href="http://localhost:3000/products" class="navbar-link-column" title="Sản phẩm">Sản phẩm</a>
         </li>
         <li class="navbar-item-column">
           <a href="#" class="navbar-link-column" title="Liên hệ">Liên hệ</a>
         </li>
       </ul>
     </div>
+    <!--Menu cac loai san pham-->
+    <div class="product-cate-link" id="product-cate-link">
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Dell</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">HP</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Razer</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Lenovo</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Asus</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Acer</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Microsoft</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Apple</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">MSI</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">LG</a>
+    </div>
+
   </header>
   <!-- <div class="loading-wrapper">
     <img src="../assets/customer/loading5.gif">
@@ -136,19 +153,19 @@
       <!-- <p class="sidebar-title">Tài khoản của<br><span id="user-name">Nguyen Kim Tung</span></p> -->
       <ul class="sidebar-menu">
         <li class="sidebar-item">
-          <a href="#" class="sidebar-link active-link">
+          <a href="/user_info" class="sidebar-link active-link">
             <i class="fas fa-user"></i>
             <span>Thông tin tài khoản</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
+          <a href="/history_transaction" class="sidebar-link ">
             <i class="fas fa-shopping-bag"></i>
             <span>Lịch sử mua hàng</span>
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
+          <a href="/" class="sidebar-link" onclick="logout()">
             <i class="fas fa-sign-out-alt"></i>
             <span>Đăng xuất</span>
           </a>
@@ -271,6 +288,18 @@
 
   <script src="../js/customer/index.js"></script>
   <script src="../js/customer/scrollToTop.js"></script>
+  <script>
+    function logout(){
+      localStorage.removeItem("token");
+      localStorage.removeItem("name");
+
+    }
+    var token = localStorage.getItem("token")
+    var name = localStorage.getItem("name")
+    if (token) {
+      document.getElementById("login-sigup").innerHTML = name
+    }
+  </script>
 </body>
 
 </html>

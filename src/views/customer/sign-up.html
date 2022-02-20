@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link href="../css/customer/style.css" rel="stylesheet" type="text/css">
   <script src="https://kit.fontawesome.com/aa8e5675e3.js" crossorigin="anonymous"></script>
-
+  <link rel="stylesheet" type="text/css" href="../css/customer/index.css">
   <link href="../css/customer/login.css" rel="stylesheet" type="text/css">
 
 </head>
@@ -26,15 +26,15 @@
           <i class="fas fa-bars navbar-icon"></i>
         </li>
         <li class="navbar-item">
-          <a href="#"><img src="../assets/customer/logo-side1200_400px.png" alt="logo eshop" class="logo"></a>
+          <a href="http://localhost:3000/"><img src="../assets/customer/logo-side1200_400px.png" alt="logo eshop" class="logo"></a>
         </li>
       </ul>
 
       <ul class="navbar-nav navbar-tab">
         <li class="navbar-item">
-          <a href="index.html" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
+          <a href="http://localhost:3000/" class="navbar-item-link" title="Trang chủ">Trang chủ</a>
         </li>
-        <li class="navbar-item">
+        <li class="navbar-item" id="products-cates">
           <a href="#" class="navbar-item-link" title="Sản phẩm">Sản phẩm</a>
         </li>
         <li class="navbar-item">
@@ -70,19 +70,19 @@
 
           <ul id="user-menu" class="dropdown-menu">
             <li class="dropdown-menu-item">
-              <a href="user_info.html" class="dropdown-menu-link">
+              <a href="/user_info" class="dropdown-menu-link">
                 <i class="fas fa-user"></i>
                 <span>Thông tin tài khoản</span>
               </a>
             </li>
             <li class="dropdown-menu-item">
-              <a href="history_transaction.html" class="dropdown-menu-link">
+              <a href="/history_transaction" class="dropdown-menu-link">
                 <i class="fas fa-shopping-bag"></i>
                 <span>Lịch sử mua hàng</span>
               </a>
             </li>
             <li class="dropdown-menu-item">
-              <a href="index_notlogin.html" class="dropdown-menu-link">
+              <a href="" class="dropdown-menu-link" onclick="logout()">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng xuất</span>
               </a>
@@ -91,8 +91,8 @@
 
         </li>
         <li class="navbar-item">
-          <div class="login-button">
-            <a href=""><span>Đăng nhập/</span>
+          <div class="login-button" id="login-sigup">
+            <a href="/login"><span>Đăng nhập/</span>
               <span>Đăng ký</span>
             </a>
           </div>
@@ -100,8 +100,8 @@
 
         <li class="navbar-item">
           <div class="cart-wrapper">
-            <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng"></i>
-            <span class="cart-number-product">100</span>
+            <i class="fas fa-shopping-cart cart-icon navbar-icon" title="Giỏ hàng" id="cart"></i>
+            <span class="cart-number-product">0</span>
           </div>
         </li>
       </ul>
@@ -110,16 +110,30 @@
     <div class="navbar-column" id="navbar-menu">
       <ul class="navbar-nav-column ">
         <li class="navbar-item-column">
-          <a href="index.html" class="navbar-link-column" title="Trang chủ">Trang chủ</a>
+          <a href="http://localhost:3000/" class="navbar-link-column" title="Trang chủ">Trang chủ</a>
         </li>
         <li class="navbar-item-column">
-          <a href="#" class="navbar-link-column" title="Sản phẩm">Sản phẩm</a>
+          <a href="http://localhost:3000/products" class="navbar-link-column" title="Sản phẩm">Sản phẩm</a>
         </li>
         <li class="navbar-item-column">
           <a href="#" class="navbar-link-column" title="Liên hệ">Liên hệ</a>
         </li>
       </ul>
     </div>
+    <!--Menu cac loai san pham-->
+    <div class="product-cate-link" id="product-cate-link">
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Dell</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">HP</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Razer</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Lenovo</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Asus</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Acer</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Microsoft</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">Apple</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">MSI</a>
+      <a href="http://localhost:3000/products" class="navbar-item-link" title="Trang chủ">LG</a>
+    </div>
+
   </header>
   <!-- <div class="loading-wrapper">
       <img src="../assets/customer/loading5.gif">
@@ -256,6 +270,16 @@
 
   <script>
     // Instantiate an new XHR Object
+    function logout(){
+      localStorage.removeItem("token");
+      localStorage.removeItem("name");
+
+    }
+    var token = localStorage.getItem("token")
+    var name = localStorage.getItem("name")
+    if (token) {
+      document.getElementById("login-sigup").innerHTML = name
+    }
     document.getElementById("submit").addEventListener('click', () => {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
