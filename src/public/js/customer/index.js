@@ -83,5 +83,9 @@ cube.addEventListener('click', () => {
 // 	loginbutton.innerHTML = `<span>${localStorage.getItem('name')}</span>`
 // }
 
-
+//Cart
+var cart = document.getElementById('cart')
+cart.addEventListener('click',() => {
+	window.open('http://localhost:3000/cart')
+})
 
