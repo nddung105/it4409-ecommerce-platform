@@ -1,19 +1,45 @@
-Here is a working example that uses nothing but new JS features.
+## Thông tin nhóm
+Nhóm 2 - Đề tài: Xây dựng website bán hàng trực tuyến sử dụng NodeJS
 
-## Usage
+Thành viên và nhiệm vụ:
+* Nguyễn Đình Dũng - 20183506: Dựng database trên cloud, làm backend các api liên quan đến đơn hàng, đăng nhập, đăng xuất
+* Ngô Song Việt Hoàng - 20183542: Dựng AWS S3 để lưu trữ file, làm backend các api liên quan đến sản phẩm và comment
+* Nguyễn Kim Tùng - 20183661: Làm frontend phần website bán hàng, kết nối với các api tương ứng
+* Nguyễn Thành Vinh - 20183859: Làm frontend phần website admin, kết nối với các api tương ứng
 
-1- Clone the repo
+  
+  
 
-2- Move to the repo folder:
+## Cách sử dụng
+
+  
+
+1- Clone repo này
+
+  
+
+2- Chuyển tới mục chứa repo đã được tải về
+
 ```
+
 cd it4409-ecommerce-platform
+
 ```
-3- Install node modules (nothing but live-server):
+
+3- Cài đặt các thư viện liên quan (yêu cầu máy cài đặt sẵn nodejs)
+
 ```
+
 npm install
+
 ```
-4- Start the app:
+
+4- Khởi chạy 
+
 ```
+
 npm start
+
 ```
-5- Go to website at: http://localhost:3000/
+
+5- Kết quả: http://localhost:3000/
